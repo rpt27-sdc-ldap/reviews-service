@@ -16,7 +16,8 @@ db.once('open', function() {
     storyStars: Number,
     reviewTitle: String,
     foundHelpful: Number,
-    source: String
+    source: String,
+    location: String
   });
 
   const Review = mongoose.model('Review', reviewSchema);

@@ -1,14 +1,16 @@
 const Review = require ('./database.js');
 const Faker = require ('faker');
 const moment = require('moment');
+const deepai = require('deepai');
+deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K');
+const randomDate = require('./seedDBHelperFunctions').randomDate;
+const reviewGenerator = require('./seedDBHelperFunctions').reviewGenerator;
+const sentenceGenerator = require('./seedDBHelperFunctions').sentenceGenerator;
+
+
 
 
 const dbObject = {};
-function randomDate(start, end) {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-}
-
-
 for (let i = 0; i < 100; i++) {
   const reviewCount = Math.floor(50 * Math.random());
   for (j = 0; j < reviewCount; j++) {
@@ -48,7 +50,11 @@ for (let i = 0; i < 100; i++) {
     } else {
       reviewObject.source = 'Audible';
     }
-    
+    if (foundHelpful % 15 === 0) {
+      reviewObject.location = 'Canada';
+    } else {
+      reviewObject.location = 'United States';
+    }
   }
 }
 
