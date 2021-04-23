@@ -40,11 +40,15 @@ for (let i = 0; i < 100; i++) {
     reviewObject.performanceStars = performanceStars;
 
     let date = randomDate(new Date(2015, 0, 1), new Date());
-    date = moment(date).calendar();
-    let dateArray = date.split('/');
-    date = dateArray.join('-');
     reviewObject.date = date;
-    // console.log(reviewObject)
+    const foundHelpful = Math.floor(Math.random() * 300);
+    reviewObject.foundHelpful = foundHelpful;
+    if(foundHelpful % 10 === 0) {
+      reviewObject.source = 'Amazon';
+    } else {
+      reviewObject.source = 'Audible';
+    }
+    
   }
 }
 
