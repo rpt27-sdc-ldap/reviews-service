@@ -20,7 +20,6 @@ for (let i = 0; i < 100; i++) {
       reviewObject.name = dbObject[reviewerId];
     }
     const urlString = 'imageUrl' + reviewerId.toString();
-    console.log(urlString);
     if (dbObject[urlString] === undefined) {
       dbObject[urlString] = imageUrl;
       reviewObject.urlString = imageUrl;
@@ -30,11 +29,11 @@ for (let i = 0; i < 100; i++) {
     const overallStars = Math.floor(Math.random() * 5) + 1;
     const storyStars = Math.floor(Math.random() * 5) + 1;
     const performanceStars = Math.floor(Math.random() * 5) + 1;
-    
+
     reviewObject.overallStars = overallStars;
     reviewObject.storyStars = storyStars;
     reviewObject.performanceStars = performanceStars;
-
+    console.log(reviewObject)
   }
 }
 

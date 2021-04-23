@@ -1,7 +1,7 @@
 {
   "name": "rpt27-reviewsFEC",
   "version": "1.0.0",
-  "description": "",
+  "description": "FEC Reviews",
   "main": "database.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,5 +19,13 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "webpack": "^5.35.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jametevia/fecReviews.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jametevia/fecReviews/issues"
+  },
+  "homepage": "https://github.com/jametevia/fecReviews#readme"
 }
