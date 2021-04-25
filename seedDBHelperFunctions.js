@@ -1,21 +1,3 @@
-const LoremIpsum = require("lorem-ipsum").LoremIpsum;
-
-const lorem = new LoremIpsum({
-  sentencesPerParagraph: {
-    max: 8,
-    min: 4
-  },
-  wordsPerSentence: {
-    max: 16,
-    min: 4
-  }
-});
-
-
-
-module.exports.words = lorem.generateWords;
-module.exports.sentences = lorem.generateSentences;
-module.exports.paragraphs = lorem.generateParagraphs;
 
 function randomDate(start, end) {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -40,7 +22,26 @@ module.exports.randomImage = randomImage;
 
 
 
+// const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
+// const lorem = new LoremIpsum({
+//   sentencesPerParagraph: {
+//     max: 8,
+//     min: 4
+//   },
+//   wordsPerSentence: {
+//     max: 16,
+//     min: 4
+//   }
+// });
+
+
+
+// module.exports.words = lorem.generateWords;
+// module.exports.sentences = lorem.generateSentences;
+// module.exports.paragraphs = lorem.generateParagraphs;
+
+// console.log(module.exports.words(4))
 
 // const reviewGenerator = async function (textInput) {
 //   var resp = await deepai.callStandardApi("text-generator", {

@@ -5,11 +5,20 @@ const moment = require('moment');
 // deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K');
 const randomDate = require('./seedDBHelperFunctions').randomDate;
 const reviewGenerator = require('./seedDBHelperFunctions').reviewGenerator;
-const sentenceGenerator = require('./seedDBHelperFunctions').sentences;
-const wordGenerator = require('./seedDBHelperFunctions').words;
-const paragraphGenerator = require('./seedDBHelperFunctions').paragraphs;
 const imageGetterFunction  = require('./imagesObject.js').imageGetter;
 const randomImage = require('./seedDBHelperFunctions').randomImage;
+const LoremIpsum = require("lorem-ipsum").LoremIpsum;
+
+const lorem = new LoremIpsum({
+  sentencesPerParagraph: {
+    max: 8,
+    min: 4
+  },
+  wordsPerSentence: {
+    max: 16,
+    min: 4
+  }
+});
 
 var Promise = require("bluebird");
 
@@ -65,8 +74,11 @@ function seedDatabase() {
         } else {
           reviewObject.location = 'United States';
         }
+        let numberOfParagraphs = Math.floor(Math.random() * 5);
+        reviewObject.review = lorem.generateParagraphs(numberOfParagraphs);
 
-        
+        let numberOfWords = Math.floor(Math.random() * 6);
+        reviewObject.title = lorem.generateWords(numberOfWords);
 
         console.log(reviewObject);
       }
