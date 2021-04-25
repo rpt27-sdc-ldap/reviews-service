@@ -23,7 +23,19 @@ function randomDate(start, end) {
 
 module.exports.randomDate = randomDate;
 
+function randomImage(obj) {
+  let index = Math.floor(Math.random() * 51)
+  index = index.toString();
+  let count = Math.floor(Math.random() * 10);
+  if (count < 2) {
+    return obj[index];
+  } else {
+    return obj['1']
+  }
+}
 
+
+module.exports.randomImage = randomImage;
 
 
 

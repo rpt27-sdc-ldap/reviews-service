@@ -9,9 +9,11 @@ const sentenceGenerator = require('./seedDBHelperFunctions').sentences;
 const wordGenerator = require('./seedDBHelperFunctions').words;
 const paragraphGenerator = require('./seedDBHelperFunctions').paragraphs;
 const imageGetterFunction  = require('./imagesObject.js').imageGetter;
-let imageObj = {};
+const randomImage = require('./seedDBHelperFunctions').randomImage;
+
 var Promise = require("bluebird");
-function getImageUrls() {
+
+function seedDatabase() {
   return new Promise(function (resolve, reject) {
     imageGetterFunction(resolve);
   })
@@ -26,7 +28,8 @@ function getImageUrls() {
         const reviewerId = Math.floor(100 * Math.random());
         reviewObject.reviewerId = reviewerId;
         const name = Faker.name.findName();
-        const imageUrl = Faker.image.animals();
+        const imageUrl = randomImage(imageObj);
+        console.log('imageUrl', imageUrl);
         if (dbObject[reviewerId] === undefined) {
           reviewObject.reviewerName = name;
           dbObject[reviewerId] = name;
@@ -50,7 +53,7 @@ function getImageUrls() {
 
         let date = randomDate(new Date(2015, 0, 1), new Date());
         reviewObject.date = date;
-        const foundHelpful = Math.floor(Math.random() * 300);
+        const foundHelpful = Math.floor(Math.random() * 100);
         reviewObject.foundHelpful = foundHelpful;
         if(foundHelpful % 10 === 0) {
           reviewObject.source = 'Amazon';
@@ -62,17 +65,20 @@ function getImageUrls() {
         } else {
           reviewObject.location = 'United States';
         }
+
+        
+
+        console.log(reviewObject);
       }
     }
-
-
 
   })
   .catch((err) => {
     console.log(err);
   })
 }
-getImageUrls();
+
+seedDatabase();
 
 
 
