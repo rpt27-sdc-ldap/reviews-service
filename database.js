@@ -8,6 +8,7 @@ db.once('open', function() {
   const reviewSchema = new mongoose.Schema({
     reviewerName: String,
     reviewerId: Number,
+    review: String,
     imageUrl: String,
     bookId: Number,
     date: Date,
