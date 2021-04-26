@@ -8,6 +8,7 @@ const reviewGenerator = require('./seedDBHelperFunctions').reviewGenerator;
 const imageGetterFunction  = require('./imagesObject.js').imageGetter;
 const randomImage = require('./seedDBHelperFunctions').randomImage;
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
+const db = require('./database');
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -38,12 +39,11 @@ function seedDatabase() {
         reviewObject.reviewerId = reviewerId;
         const name = Faker.name.findName();
         const imageUrl = randomImage(imageObj);
-        console.log('imageUrl', imageUrl);
         if (dbObject[reviewerId] === undefined) {
           reviewObject.reviewerName = name;
           dbObject[reviewerId] = name;
         } else {
-          reviewObject.name = dbObject[reviewerId];
+          reviewObject.reviewerName = dbObject[reviewerId];
         }
         const urlString = 'imageUrl' + reviewerId.toString();
         if (dbObject[urlString] === undefined) {
@@ -80,7 +80,10 @@ function seedDatabase() {
         let numberOfWords = Math.floor(Math.random() * 6);
         reviewObject.title = lorem.generateWords(numberOfWords);
 
-        console.log(reviewObject);
+        db.Review.create(reviewObject, function (err, small) {
+          if (err) return handleError(err);
+          // saved!
+        })
       }
     }
 
