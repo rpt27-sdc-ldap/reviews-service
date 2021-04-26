@@ -4,7 +4,9 @@ const reviewCollection = db.Review;
 
 
 const reviewGetter = (req, res, id) => {
-
+  if (res === undefined) {
+    return;
+  }
   return new Promise(async (resolve, reject) => {
     const data = require('../Database/database.js');
     const review = data.Review;

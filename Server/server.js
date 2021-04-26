@@ -8,7 +8,7 @@ const reviewCollection = db.Review;
 app.use(express.static(pathName));
 const Promise = require('bluebird');
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 const reviewGetter = require('./serverHelpers').reviewGetter;
 
