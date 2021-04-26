@@ -79,7 +79,7 @@ function seedDatabase() {
 
         let numberOfWords = Math.floor(Math.random() * 6);
         reviewObject.title = lorem.generateWords(numberOfWords);
-
+        console.log('reviewObject', reviewObject);
         db.Review.create(reviewObject, function (err, small) {
           if (err) return handleError(err);
           // saved!
