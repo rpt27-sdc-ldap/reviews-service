@@ -1,14 +1,14 @@
-const Review = require ('./database.js');
+const Review = require ('../database.js');
 const Faker = require ('faker');
 const moment = require('moment');
 // const deepai = require('deepai');
 // deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K');
-const randomDate = require('./seedDBHelperFunctions').randomDate;
-const reviewGenerator = require('./seedDBHelperFunctions').reviewGenerator;
-const imageGetterFunction  = require('./imagesObject.js').imageGetter;
-const randomImage = require('./seedDBHelperFunctions').randomImage;
+const randomDate = require('seedDBHelperFunctions').randomDate;
+const reviewGenerator = require('seedDBHelperFunctions').reviewGenerator;
+const imageGetterFunction  = require('..S3_Access/imagesObject.js').imageGetter;
+const randomImage = require('seedDBHelperFunctions').randomImage;
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
-const db = require('./database');
+const db = require('../Database');
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
