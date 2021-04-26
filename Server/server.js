@@ -14,9 +14,12 @@ const reviewGetter = require('./serverHelpers').reviewGetter;
 
 
 app.post('/reviews', (req, res) => {
-  const id = req.body;
-  console.log('req.body', req.body);
-  reviewGetter(req, res);
+  let id;
+  for (var key in req.body) {
+    id = key;
+  }
+
+  reviewGetter(req, res, id);
 });
 
 app.listen(port, () => {
