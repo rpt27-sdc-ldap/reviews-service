@@ -4,23 +4,37 @@
   "description": "FEC Reviews",
   "main": "database.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "jest",
+    "start": "nodemon Server/server.js",
+    "build": "webpack --config webpack.config.js",
+    "webpack": "webpack --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.13.1",
+    "@shelf/jest-mongodb": "^1.2.4",
+    "aws-sdk": "^2.892.0",
+    "babel-jest": "^26.6.3",
+    "babel-polyfill": "^6.26.0",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "deepai": "^1.0.17",
     "express": "^4.17.1",
     "faker": "^5.5.3",
+    "jest": "^26.6.3",
     "jquery": "^3.6.0",
+    "lorem-ipsum": "^2.0.3",
     "moment": "^2.29.1",
+    "mongodb": "^3.6.6",
     "mongoose": "^5.12.5",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
     "react": "^17.0.2",
+    "react-dev": "0.0.1",
     "react-dom": "^17.0.2",
-    "webpack": "^5.35.0"
+    "react-test-renderer": "^17.0.2"
   },
   "repository": {
     "type": "git",
@@ -29,5 +43,20 @@
   "bugs": {
     "url": "https://github.com/jametevia/fecReviews/issues"
   },
-  "homepage": "https://github.com/jametevia/fecReviews#readme"
+  "homepage": "https://github.com/jametevia/fecReviews#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "less": "^4.1.1",
+    "less-loader": "^8.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
 }
