@@ -4,8 +4,8 @@ import ReactDOM from "react-dom";
 function reviewBody(props) {
   console.log('hi');
   console.log(props.reviews)
-  const reviewItems = props.reviews.map((review) =>
-  <div>
+  const reviewItems = props.reviews.map((review, i) =>
+  <div key={i}>
     <h1 className="reviewTitle">
       {review.title}
     </h1>
@@ -13,7 +13,7 @@ function reviewBody(props) {
       {review.review}
     </span>
     <span className="foundHelpful">
-      {review.foundHelper} found this helpful
+      {review.foundHelpful} found this helpful
     </span>
   </div>
 );

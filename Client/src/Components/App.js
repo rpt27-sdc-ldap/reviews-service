@@ -18,7 +18,7 @@ class App extends React.Component {
       data: '1',
       method: 'POST',
       success: (data) => {
-        console.log('data', data);
+        this.setState({reviews: data});
       },
       error: (error) => {
         console.log('error', error);
@@ -31,7 +31,7 @@ class App extends React.Component {
       data: '[1, 2, 3, 4, 5, 6, 7]',
       method: 'POST',
       success: (data) => {
-        console.log('data', data);
+        this.setState({carouselReviews: data})
       },
       error: (error) => {
         console.log('error', error);
@@ -54,7 +54,7 @@ class App extends React.Component {
           <hr></hr>
         </span>
         <div>
-        <ReviewBody reviews={this.state.reviews.slice(0, 10)}/>
+        <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 10)}/>
         </div>
         <button className="showMore">
           Show More
