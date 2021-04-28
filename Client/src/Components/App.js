@@ -7,9 +7,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.reviewGetter = this.reviewGetter.bind(this);
+    this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
   }
 
-  componentDidMount() {
+  reviewGetter () {
     $.ajax({
       url: "http://localhost:4000/reviews",
       data: '1',
@@ -21,7 +23,8 @@ class App extends React.Component {
         console.log('error', error);
       }
     })
-
+  }
+  carouselReviewsGetter () {
     $.ajax({
       url: "http://localhost:4000/reviews/carouselReviews",
       data: '[1, 2, 3, 4, 5, 6, 7]',
@@ -34,8 +37,26 @@ class App extends React.Component {
       }
     })
   }
+
+  componentDidMount() {
+    this.reviewGetter();
+    this.carouselReviewsGetter();
+  }
   render() {
-    return <div>Hello World</div>;
+    return (
+      <div className={"reviewsShell"}>
+        <nav>
+          <h2 className={"Audible"}>Audible.com Reviews</h2>
+          <h2 className={"Amazon"}>Amazon.com Reviews</h2>
+        </nav>
+        <span className="greyBar">
+          <hr></hr>
+        </span>
+        <button className="showMore">
+          Show More
+        </button>
+    </div>
+    );
   }
 }
 
