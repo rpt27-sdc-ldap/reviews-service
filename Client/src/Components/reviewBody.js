@@ -6,9 +6,9 @@ function reviewBody(props) {
   console.log(props.reviews)
   const reviewItems = props.reviews.map((review, i) =>
   <div key={i}>
-    <h1 className="reviewTitle">
+    <h2 className="reviewTitle">
       {review.title}
-    </h1>
+    </h2>
     <span className="reviewBodyText">
       {review.review}
     </span>
