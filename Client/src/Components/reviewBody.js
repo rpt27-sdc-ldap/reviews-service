@@ -12,9 +12,9 @@ function reviewBody(props) {
     <span className="reviewBodyText">
       {review.review}
     </span>
-    <span className="foundHelpful">
+    <div className="foundHelpful">
       {review.foundHelpful} found this helpful
-    </span>
+    </div>
   </div>
 );
   return (
