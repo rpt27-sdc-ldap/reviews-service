@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 const reviewGetter = require('./serverHelpers').reviewGetter;
-
+const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter;
 
 app.post('/reviews', (req, res) => {
   let id;
@@ -21,6 +21,15 @@ app.post('/reviews', (req, res) => {
 
   reviewGetter(req, res, id);
 });
+
+app.post('/reviews/carouselReviews', (req, res) => {
+  let idArray;
+  for (var key in req.body) {
+    idArray = key;
+  }
+  idArray = idArray.split(',');
+  arrayOfIdsReviewGetter(req, res, idArray)
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
