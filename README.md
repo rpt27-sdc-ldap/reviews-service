@@ -4,7 +4,7 @@ Audible Reviews is a component in a mock Audible page. Audible Reviews displays 
 
 Database Folder includes 2 database helpers: seedDB seeds the database and seedDBHelperFunctions helps with seeding the database. MongoDB database setup is in Database/database.js.
 
-Jest Tests are located din Client/ Tests.
+Jest Tests are located in Client/ Tests.
 
 Style sheet is in Client/style. It uses 'less' for CSS.
 
@@ -16,7 +16,7 @@ The Server with endpoints is in Server/server.js
 The two endpoints are /reviews and /reviews/carouselReviews.
 
 
-http://localhost:4000/reviews <bookId> #returns
+http://localhost:4000/reviews (bookId) #returns
   {reviewerName: String,
   reviewerId: Number,
   review: String,
@@ -32,7 +32,7 @@ http://localhost:4000/reviews <bookId> #returns
   source: String,
   location: String}
 
-http://localhost:4000/reviews/carouselReviews <arrayOfBookIds> #returns array of infoObjects
+http://localhost:4000/reviews/carouselReviews (arrayOfBookIds) #returns array of infoObjects
 {reviewerName: String,
 reviewTitle: string
 date: date,
