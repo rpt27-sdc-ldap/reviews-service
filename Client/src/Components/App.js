@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "../../style/main.less";
 import $ from 'jquery';
+import ReviewBody from './reviewBody';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {reviews: [], carouselReviews: []};
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
   }
@@ -52,6 +53,9 @@ class App extends React.Component {
         <span className="greyBar">
           <hr></hr>
         </span>
+        <div>
+        <ReviewBody reviews={this.state.reviews.slice(0, 10)}/>
+        </div>
         <button className="showMore">
           Show More
         </button>
