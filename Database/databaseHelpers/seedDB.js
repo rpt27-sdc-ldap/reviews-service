@@ -1,14 +1,11 @@
 const Review = require ('../database.js');
 const Faker = require ('faker');
-const moment = require('moment');
-// const deepai = require('deepai');
-// deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K');
-const randomDate = require('seedDBHelperFunctions').randomDate;
-const reviewGenerator = require('seedDBHelperFunctions').reviewGenerator;
-const imageGetterFunction  = require('..S3_Access/imagesObject.js').imageGetter;
-const randomImage = require('seedDBHelperFunctions').randomImage;
+const randomDate = require('./seedDBHelperFunctions').randomDate;
+const reviewGenerator = require('./seedDBHelperFunctions').reviewGenerator;
+const imageGetterFunction  = require('../../S3_Access/imagesObject.js').imageGetter;
+const randomImage = require('./seedDBHelperFunctions').randomImage;
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
-const db = require('../Database');
+const db = require('../database.js');
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -74,13 +71,19 @@ function seedDatabase() {
         } else {
           reviewObject.location = 'United States';
         }
-        let numberOfParagraphs = Math.floor(Math.random() * 5);
-        reviewObject.review = lorem.generateParagraphs(numberOfParagraphs);
+        let numberOfParagraphs = Math.floor(Math.random() * 3);
+        let numberOfSentences = Math.floor(Math.random() * 7);
+        let conditional = Math.random() * 5;
+        if (conditional < 3) {
+          reviewObject.review = lorem.generateParagraphs(numberOfParagraphs);
+        } else {
+          reviewObject.review = lorem.generateSentences(numberOfSentences);
+        }
 
         let numberOfWords = Math.floor(Math.random() * 6);
         reviewObject.title = lorem.generateWords(numberOfWords);
         console.log('reviewObject', reviewObject);
-        db.Review.create(reviewObject, function (err, small) {
+        db.create(reviewObject, function (err, small) {
           if (err) return handleError(err);
           // saved!
         })

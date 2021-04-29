@@ -15,7 +15,7 @@ class App extends React.Component {
   reviewGetter () {
     $.ajax({
       url: "http://localhost:4000/reviews",
-      data: '1',
+      data: {id: 1},
       method: 'POST',
       success: (data) => {
         this.setState({reviews: data});
@@ -28,7 +28,7 @@ class App extends React.Component {
   carouselReviewsGetter () {
     $.ajax({
       url: "http://localhost:4000/reviews/carouselReviews",
-      data: '[1, 2, 3, 4, 5, 6, 7]',
+      data: {ids: [1, 2, 3, 4, 5, 6, 7]},
       method: 'POST',
       success: (data) => {
         this.setState({carouselReviews: data})

@@ -1,6 +1,6 @@
 const Promise = require('bluebird');
 const db = require('../Database/database.js');
-const reviewCollection = db.Review;
+const reviewCollection = db;
 
 
 const reviewGetter = (req, res, id) => {
