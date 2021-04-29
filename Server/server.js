@@ -13,6 +13,8 @@ app.use(bodyParser.json());
 const reviewGetter = require('./serverHelpers').reviewGetter;
 const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter;
 
+
+
 app.post('/reviews', (req, res) => {
   let id;
   for (var key in req.body) {

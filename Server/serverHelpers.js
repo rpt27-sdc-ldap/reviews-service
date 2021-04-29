@@ -44,17 +44,6 @@ const arrayOfIdsReviewGetter = (req, res, idArray) => {
         resolve(data);
       })
         .then((data) => {
-          // newData = JSON.parse(data);
-          // dataArray = [];
-          // for (var i = 0; i < newData.length; i++) {
-          //   let returnObject = {};
-          //   returnObject.bookId = data[i].bookId;
-          //   returnObject.reviewerName = data[i].reviewerName;
-          //   returnObject.reviewTitle = data[i].title;
-          //   returnObject.date = data[i].date;
-          //   dataArray.push(returnObject);
-          // }
-          // newData = JSON.stringify(dataArray);
           res.send(data);
         })
         .catch((error) => {
@@ -65,21 +54,7 @@ const arrayOfIdsReviewGetter = (req, res, idArray) => {
       console.log(error);
     })
 }
-// reviewGetter();
 
-// const reviewGetter = (req, res, id) => {
-//   return new Promise(async (resolve, reject) => {
-//     // data = await reviewCollection.find({bookId: id});
-//     resolve('hi');
-//   })
-//   .then((data) => {
-//       console.log('id', id)
-//       res.send(data);
-//     })
-//     .catch((error) => {
-//       res.send(error);
-//     })
-// }
 
 module.exports.reviewGetter = reviewGetter;
 module.exports.arrayOfIdsReviewGetter = arrayOfIdsReviewGetter;
