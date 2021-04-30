@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 function reviewBody(props) {
-  console.log('hi');
-  console.log(props.reviews)
   const reviewItems = props.reviews.map((review, i) =>
   <div key={i}>
     <h2 className="reviewTitle">
