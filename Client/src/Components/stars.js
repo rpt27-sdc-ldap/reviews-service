@@ -10,7 +10,7 @@ function stars(props) {
   }
 
   return (
-    <div>
+    <div className="reviewAndStars">
       <div>
       <span className="overallStars">Overall &#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
       <span className="Stars overallStars">{starObject[props.review.overallStars]}</span>
