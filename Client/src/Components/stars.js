@@ -9,24 +9,21 @@ function stars(props) {
     '5': '\u2605\u2605\u2605\u2605\u2605'
   }
 
-  const Stars = props.reviews.map((review, i) =>
-    <div key={i}>
+  return (
+    <div>
       <div>
-      <span>Overall</span>
-      <span className="Stars">{starObject[review.overallStars]}</span>
+      <span className="overallStars">Overall &#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span className="Stars overallStars">{starObject[props.review.overallStars]}</span>
       </div>
       <div>
-        <span>Performance</span>
-        <span className="Stars">{starObject[review.performanceStars]}</span>
+        <span className="performanceStars">Performance&#8202;&#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className="Stars performanceStars">{starObject[props.review.performanceStars]}</span>
       </div>
       <div>
-        <span>Story</span>
-        <span className="Stars">{starObject[review.storyStars]}</span>
+        <span className="storyStars">Story&#8202;&#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className="Stars storyStars">{starObject[props.review.storyStars]}</span>
       </div>
     </div>
-  );
-  return (
-    <div>{Stars}</div>
   );
 }
 
