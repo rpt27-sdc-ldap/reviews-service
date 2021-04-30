@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Stars from "./stars.js"
+import Stars from "./stars.js";
+import User from "./user.js";
 
 function reviewBody(props) {
   const reviewItems = props.reviews.map((review, i) =>
   <div key={i}>
     <div className="column left">
         <Stars review={review} />
+        <User review={review} />
       </div>
       <div className="column right">
         <h2 className="reviewTitle">
