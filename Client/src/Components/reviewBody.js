@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Stars from "./stars.js"
 
 function reviewBody(props) {
   const reviewItems = props.reviews.map((review, i) =>
   <div key={i}>
+    <Stars reviews={props.reviews}/>
     <h2 className="reviewTitle">
       {review.title}
     </h2>
