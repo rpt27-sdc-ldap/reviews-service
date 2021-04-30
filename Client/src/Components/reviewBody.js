@@ -12,7 +12,7 @@ function reviewBody(props) {
       </div>
       <div className="column right">
         <h2 className="reviewTitle">
-          {review.title}
+          {review.reviewTitle}
         </h2>
         <span className="reviewBodyText">
           {review.review}
