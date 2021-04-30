@@ -85,7 +85,6 @@ function seedDatabase() {
         console.log('reviewObject', reviewObject);
         db.create(reviewObject, function (err, small) {
           if (err) return handleError(err);
-          // saved!
         })
       }
     }
