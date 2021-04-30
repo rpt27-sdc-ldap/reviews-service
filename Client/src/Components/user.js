@@ -8,10 +8,12 @@ const User = (props) => {
   const dateArray = slicedDate.split('-');
   const dateString = dateArray[1] + '-' + dateArray[2] + '-' + dateArray[0];
   return (
-    <div>
+    <div className="userInfo">
       <img src={props.review.urlString} alt="Profile Picture" className="profilePicture user" />
-      <span className="user">{props.review.reviewerName}</span>
-      <span className="date">{dateString}</span>
+      <div className="nameAndDate">
+        <div className="userName">{props.review.reviewerName}</div>
+        <div className="date">{dateString}</div>
+      </div>
     </div>
   )
 };
