@@ -15,6 +15,9 @@ RenderDom is in Client/index.js. App components are in Client/src/Components
 The Server with endpoints is in Server/server.js
 The two endpoints are /reviews and /reviews/carouselReviews.
 
+//______This route returns all reviews on page load.
+//______It returns {reviewerName: String,reviewerId: Number,review: String,urlString: String,bookName: String,bookId: Number,date: Date,overallStars: Number,performanceStars: Number,storyStars: Number,title: String,foundHelpful: Number,source: String, location: String}
+//______This route fires on page load since this is a route integral to the initial structure of the page
 
 http://localhost:4000/reviews (bookId) #returns
   {reviewerName: String,
@@ -31,6 +34,10 @@ http://localhost:4000/reviews (bookId) #returns
   foundHelpful: Number,
   source: String,
   location: String}
+
+//_____This route returns reviews for carousel data such as when one wants review data for recommended books and related books.
+//_____It takse in an object formatted with book ids as the key {ids: [1, 2, 3, etc.]}
+//_____This will return an array of objects with: bookId, reviewTitle, reviewerName, and reviewData.
 
 http://localhost:4000/reviews/carouselReviews (arrayOfBookIds) #returns array of infoObjects
 {reviewerName: String,

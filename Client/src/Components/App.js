@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "../../style/main.less";
 import $ from 'jquery';
 import ReviewBody from './reviewBody';
+import SortBy from './sortBy';
+import FilterBy from './filterBy';
 
 class App extends React.Component {
   constructor(props) {
@@ -53,13 +55,17 @@ class App extends React.Component {
         <span className="greyBar">
           <hr></hr>
         </span>
+        <div className="filters">
+          <SortBy />
+          <FilterBy />
+        </div>
         <div>
-        <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 10)}/>
+          <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 10)} />
         </div>
         <button className="showMore">
           Show More
         </button>
-    </div>
+      </div>
     );
   }
 }

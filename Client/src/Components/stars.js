@@ -12,15 +12,15 @@ function stars(props) {
   return (
     <div className="reviewAndStars">
       <div>
-      <span className="overallStars">Overall &#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span className="overallStarsText">Overall &#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
       <span className="Stars overallStars">{starObject[props.review.overallStars]}</span>
       </div>
       <div>
-        <span className="performanceStars">Performance&#8202;&#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className="performanceStarsText">Performance&#8202;&#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className="Stars performanceStars">{starObject[props.review.performanceStars]}</span>
       </div>
       <div>
-        <span className="storyStars">Story&#8202;&#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className="storyStarsText">Story&#8202;&#8202;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className="Stars storyStars">{starObject[props.review.storyStars]}</span>
       </div>
     </div>
