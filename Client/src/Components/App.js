@@ -17,9 +17,15 @@ class App extends React.Component {
   reviewGetter () {
     $.ajax({
       url: "http://localhost:4000/reviews",
-      data: {id: 1},
+      data: {id: 2},
       method: 'POST',
       success: (data) => {
+        for (let i = 0; i < data.length; i++) {
+          let htmlReview = data[i].review.split('<br>');
+          let htmlJoin = htmlReview.join("\n\n");
+          data[i].review = htmlJoin;
+          console.log(data[i].review)
+        }
         this.setState({reviews: data});
       },
       error: (error) => {
@@ -60,7 +66,7 @@ class App extends React.Component {
           <FilterBy />
         </div>
         <div>
-          <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 10)} />
+          <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 20)} />
         </div>
         <button className="showMore">
           Show More

@@ -18,6 +18,11 @@ const reviewGetter = (req, res, id) => {
         resolve(data);
       })
         .then((data) => {
+          for (let i = 0; i < data.length; i++) {
+            let reviewArray = data[i].review.split('\n');
+            let review = reviewArray.join('<br>');
+            data[i].review = review;
+          }
           res.send(data);
         })
         .catch((error) => {
