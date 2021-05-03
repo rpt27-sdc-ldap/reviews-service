@@ -11,6 +11,7 @@ function reviewBody(props) {
       reviews.push(singleReview);
     }
   }
+  reviews = reviews.slice(0, props.itemsToShow);
   const reviewItems = reviews.map((review, i) =>
   <div key={i}>
     <div className="column left">

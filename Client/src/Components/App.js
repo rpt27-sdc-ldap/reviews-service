@@ -9,13 +9,20 @@ import FilterBy from './filterBy';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: [], };
+    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10 };
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
+    this.showMore = this.showMore.bind(this);
+  }
+
+  showMore () {
+    let itemsToShow = this.state.itemsToShow + 10;
+    this.setState({itemsToShow: itemsToShow});
   }
 
   sortReviews (e) {
+    this.setState({itemsToShow: 10});
     if (e.target.value === 'mostHelpful') {
       for (let i = 0; i < this.state.reviews.length; i++) {
         this.state.reviews.sort((a, b) => {
@@ -158,9 +165,9 @@ class App extends React.Component {
           <FilterBy sortReviews={this.sortReviews}/>
         </div>
         <div>
-          <ReviewBody className="reviewBody" reviews={this.state.reviews} />
+          <ReviewBody className="reviewBody" itemsToShow={this.state.itemsToShow} reviews={this.state.reviews} />
         </div>
-        <button className="showMore">
+        <button className="showMore" onClick={(() => this.showMore())}>
           Show More
         </button>
       </div>
