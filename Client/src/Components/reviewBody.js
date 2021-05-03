@@ -19,9 +19,9 @@ function reviewBody(props) {
         <User review={review} />
       </div>
       <div className="column right">
-        <h2 className="reviewTitle">
+        <h4 className="reviewTitle">
           {review.reviewTitle}
-        </h2>
+        </h4>
         <span className="reviewBodyText">
           {review.review}
         </span>
