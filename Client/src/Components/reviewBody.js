@@ -4,12 +4,14 @@ import Stars from "./stars.js";
 import User from "./user.js";
 
 function reviewBody(props) {
+  let reviews = [];
   for (let i = 0; i < props.reviews.length; i++) {
-    if (props.reviews[i].display === false) {
-      delete props.reviews[i];
+    let singleReview = props.reviews[i];
+    if (singleReview.display === true) {
+      reviews.push(singleReview);
     }
   }
-  const reviewItems = props.reviews.map((review, i) =>
+  const reviewItems = reviews.map((review, i) =>
   <div key={i}>
     <div className="column left">
         <Stars review={review} />

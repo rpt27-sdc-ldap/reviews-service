@@ -42,6 +42,7 @@ class App extends React.Component {
       }
       this.setState(this.state.reviews);
     } else if (e.target.value === '4 star only') {
+      console.log('reviews state', this.state.reviews);
       for (let i = 0; i < this.state.reviews.length; i++) {
         if (this.state.reviews[i].overallStars === 4) {
           this.state.reviews[i].display = true;
@@ -95,11 +96,23 @@ class App extends React.Component {
       data: {id: 2},
       method: 'POST',
       success: (data) => {
+        let nameObject = {};
+        console.log('data top', data);
         for (let i = 0; i < data.length; i++) {
           let htmlReview = data[i].review.split('<br>');
           let htmlJoin = htmlReview.join("\n\n");
           data[i].review = htmlJoin;
+          data[i].display = true;
+
+          if (nameObject[data[i].reviewerName] === undefined) {
+            nameObject[data[i].reviewerName] = 1;
+          } else if (nameObject[data[i].reviewerName] === 1) {
+            data.splice(i, 1);
+          }
         }
+        console.log('data bottom', data);
+
+
         for (let i = 0; i < data.length; i++) {
           data.sort((a, b) => {
             return b.foundHelpful - a.foundHelpful;
@@ -145,7 +158,7 @@ class App extends React.Component {
           <FilterBy sortReviews={this.sortReviews}/>
         </div>
         <div>
-          <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 20)} />
+          <ReviewBody className="reviewBody" reviews={this.state.reviews} />
         </div>
         <button className="showMore">
           Show More
