@@ -104,7 +104,6 @@ class App extends React.Component {
       method: 'POST',
       success: (data) => {
         let nameObject = {};
-        console.log('data top', data);
         for (let i = 0; i < data.length; i++) {
           let htmlReview = data[i].review.split('<br>');
           let htmlJoin = htmlReview.join("\n\n");
@@ -117,7 +116,6 @@ class App extends React.Component {
             data.splice(i, 1);
           }
         }
-        console.log('data bottom', data);
 
 
         for (let i = 0; i < data.length; i++) {
