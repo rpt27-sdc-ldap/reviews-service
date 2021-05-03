@@ -82,6 +82,9 @@ class App extends React.Component {
       this.setState(this.state.reviews);
 
     } else if (e.target.value === 'All Stars') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        this.state.reviews[i].display = true;
+      }
       this.setState(this.state.reviews);
     }
   }
@@ -96,6 +99,11 @@ class App extends React.Component {
           let htmlReview = data[i].review.split('<br>');
           let htmlJoin = htmlReview.join("\n\n");
           data[i].review = htmlJoin;
+        }
+        for (let i = 0; i < data.length; i++) {
+          data.sort((a, b) => {
+            return b.foundHelpful - a.foundHelpful;
+          })
         }
         this.setState({reviews: data});
       },
