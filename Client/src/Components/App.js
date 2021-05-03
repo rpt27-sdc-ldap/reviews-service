@@ -12,10 +12,78 @@ class App extends React.Component {
     this.state = {reviews: [], carouselReviews: [], };
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
+    this.sortReviews = this.sortReviews.bind(this);
   }
 
   sortReviews (e) {
-    console.log(e);
+    if (e.target.value === 'mostHelpful') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        this.state.reviews.sort((a, b) => {
+          return b.foundHelpful - a.foundHelpful;
+        })
+      }
+      this.setState(this.state.reviews);
+    } else if (e.target.value === 'mostRecent') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        this.state.reviews.sort((a, b) => {
+          return Date.parse(b.date) - Date.parse(a.date);
+        })
+      }
+      this.setState(this.state.reviews);
+    }
+
+    if (e.target.value === '5 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 5) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+    } else if (e.target.value === '4 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 4) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === '3 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 3) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === '2 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 2) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === '1 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 1) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === 'All Stars') {
+      this.setState(this.state.reviews);
+    }
   }
 
   reviewGetter () {
@@ -28,7 +96,6 @@ class App extends React.Component {
           let htmlReview = data[i].review.split('<br>');
           let htmlJoin = htmlReview.join("\n\n");
           data[i].review = htmlJoin;
-          console.log(data[i].review)
         }
         this.setState({reviews: data});
       },
@@ -67,7 +134,7 @@ class App extends React.Component {
         </span>
         <div className="filters">
           <SortBy sortReviews={this.sortReviews}/>
-          <FilterBy />
+          <FilterBy sortReviews={this.sortReviews}/>
         </div>
         <div>
           <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 20)} />

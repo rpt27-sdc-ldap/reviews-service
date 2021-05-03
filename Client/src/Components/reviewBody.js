@@ -4,6 +4,11 @@ import Stars from "./stars.js";
 import User from "./user.js";
 
 function reviewBody(props) {
+  for (let i = 0; i < props.reviews.length; i++) {
+    if (props.reviews[i].display === false) {
+      delete props.reviews[i];
+    }
+  }
   const reviewItems = props.reviews.map((review, i) =>
   <div key={i}>
     <div className="column left">
