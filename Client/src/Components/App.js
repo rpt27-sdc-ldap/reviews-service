@@ -9,9 +9,13 @@ import FilterBy from './filterBy';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: []};
+    this.state = {reviews: [], carouselReviews: [], };
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
+  }
+
+  sortReviews (e) {
+    console.log(e);
   }
 
   reviewGetter () {
@@ -62,7 +66,7 @@ class App extends React.Component {
           <hr></hr>
         </span>
         <div className="filters">
-          <SortBy />
+          <SortBy sortReviews={this.sortReviews}/>
           <FilterBy />
         </div>
         <div>
