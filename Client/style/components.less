@@ -113,7 +113,7 @@
   padding-left: 3%;
   color: rgba(20,20,20,.65);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 14px;
   line-height: 22px;
   padding-right: 20px;
   float: left;
@@ -123,7 +123,7 @@
 .Amazon {
   color: rgba(20,20,20,.65);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 14px;
   line-height: 22px;
   float: left;
   font-family: "Audible Sans",Arial,sans-serif;
@@ -205,18 +205,62 @@
 
 
 .filters {
+  width: 50%;
   padding-top: 2%;
   float: right;
   padding-right: 10%;
+  height: 50px;
+  justify-content: center;
 }
 
-.filterBy {
-  float: left;
-  width: 49%;
+#filterBy {
+  position: relative;
+  bottom: 0;
+  width: 200px;
+  flex: 1;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: rgba(20,20,20,.65);
 }
 
-.sortBy {
+#sortBy {
+  position: relative;
+  bottom: 0;
+  width: 200px;
+  flex: 1;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: rgba(20,20,20,.65);
+}
+
+#filterByLabel{
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(20,20,20,.65);
+}
+
+#sortByLabel{
   float: left;
-  width: 49%;
-  padding-right: 2%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(20,20,20,.65);
+}
+
+.sortByDiv {
+  width: 40%;
+  left: 0;
+  display: inline-block;
+  height: 50px;
+  padding-right: 15px;
+
+}
+.filterByDiv {
+  height: 50px;
+  width: 40%;
+  right: 0;
+  display: inline-block;
 }
