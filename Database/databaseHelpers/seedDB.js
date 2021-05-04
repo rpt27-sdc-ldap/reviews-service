@@ -50,8 +50,28 @@ function seedDatabase() {
           reviewObject.urlString = dbObject[urlString];
         }
         const overallStars = Math.floor(Math.random() * 5) + 1;
-        const storyStars = Math.floor(Math.random() * 5) + 1;
-        const performanceStars = Math.floor(Math.random() * 5) + 1;
+
+        function randomIntFromInterval(min, max) {
+          return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        let storyStars = randomIntFromInterval((overallStars - 2) , (overallStars + 2));
+        let performanceStars = randomIntFromInterval((overallStars - 1), (overallStars + 2));
+
+        if (storyStars < 1) {
+          storyStars = 1;
+        }
+        if (storyStars > 5) {
+          storyStars = 5;
+        }
+
+        if (performanceStars < 1) {
+          performanceStars = 1;
+        }
+        if (performanceStars > 5) {
+          performanceStars = 5;
+        }
+
 
         reviewObject.overallStars = overallStars;
         reviewObject.storyStars = storyStars;
@@ -71,10 +91,10 @@ function seedDatabase() {
         } else {
           reviewObject.location = 'United States';
         }
-        let numberOfParagraphs = Math.floor(Math.random() * 3);
-        let numberOfSentences = Math.floor(Math.random() * 7);
+        let numberOfParagraphs = Math.floor(Math.random() * 4);
+        let numberOfSentences = Math.floor(Math.random() * 8);
         let conditional = Math.random() * 5;
-        if (conditional < 3) {
+        if (conditional < 4) {
           reviewObject.review = lorem.generateParagraphs(numberOfParagraphs);
         } else {
           reviewObject.review = lorem.generateSentences(numberOfSentences);

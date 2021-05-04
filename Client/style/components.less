@@ -17,9 +17,13 @@
 }
 
 .foundHelpful {
-  margin-bottom: 15%;
-  display: flex;
-  vertical-align: bottom;
+  position: relative;
+  display: block;
+  margin-top: 3%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(20,20,20,.65);
 }
 
 .userInfo {
@@ -27,6 +31,8 @@
   display: flex;
   vertical-align: bottom;
   padding-top: 20px;
+  width: 90%;
+  float: right;
 }
 
 
@@ -65,18 +71,23 @@
 .left {
   width: 20%;
   clear: right;
-  padding-left: 7%;
+
   flex-shrink: 1;
+  height: 100%;
 }
 
 .right {
   height: 10%;
   width: 66%;
   padding-right: 4%;
+  padding-left: 3%;
+  height: 100%;
 }
 
 .reviewAndStars{
-  display: inline-block
+  // display: inline-block;
+  float: right;
+  width: 90%;
 }
 
 .overallStarsText {
@@ -207,11 +218,7 @@
   margin-inline-end: 0px;
 }
 
-.foundHelpful{
-  position: relative;
-  display: block;
-  margin-top: 3%;
-}
+
 
 
 
