@@ -162,7 +162,7 @@ class App extends React.Component {
           <SortBy sortReviews={this.sortReviews}/>
           <FilterBy sortReviews={this.sortReviews}/>
         </div>
-        <div>
+        <div className="reviewBodyContainer">
           <ReviewBody className="reviewBody" itemsToShow={this.state.itemsToShow} reviews={this.state.reviews} />
         </div>
         <button className="showMore" onClick={(() => this.showMore())}>

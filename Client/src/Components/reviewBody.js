@@ -13,7 +13,7 @@ function reviewBody(props) {
   }
   reviews = reviews.slice(0, props.itemsToShow);
   const reviewItems = reviews.map((review, i) =>
-  <div key={i}>
+  <div key={i} className="columnsContainers">
     <div className="column left">
         <Stars review={review} />
         <User review={review} />
