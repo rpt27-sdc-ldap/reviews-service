@@ -195,6 +195,9 @@ class App extends React.Component {
           <div className={"greyBar"}></div>
           <button className={this.state.Canada} onClick={() => {this.setCanadaClass()}}>Audible.co.ca Reviews</button>
           <button className={this.state.Audible} onClick={() => {this.setAudibleClass()}}>Audible.com Reviews</button>
+          <div className="customerReviewsDiv">
+            Customer Reviews
+          </div>
         </nav>
         <div className="filters">
           <SortBy sortReviews={this.sortReviews}/>
