@@ -45,11 +45,19 @@ const arrayOfIdsReviewGetter = (req, res, idArray) => {
   })
     .then((data) => {
       return new Promise(async (resolve, reject) => {
-        data = await reviewCollection.find({ bookId: {$in: idArray} }, {bookId: true, reviewerName: true, title: true, date: true, overallStars: true});
+        data = await reviewCollection.find({ bookId: {$in: idArray} }, {bookId: true, reviewerName: true, title: true, date: true, overallStars: true, reviewTitle: true});
         resolve(data);
-      })
+       })
         .then((data) => {
-          res.send(data);
+          const idsOfAlreadyLoggedBooks = {};
+          const arrayOfRecommendedReviews = [];
+          for (let i = 0; i < data.length; i++) {
+            if (idsOfAlreadyLoggedBooks[data[i].bookId] === undefined) {
+              arrayOfRecommendedReviews.push(data[i])
+              idsOfAlreadyLoggedBooks[data[i].bookId] = 1;
+            }
+          }
+          res.send(arrayOfRecommendedReviews);
         })
         .catch((error) => {
           res.send(error);

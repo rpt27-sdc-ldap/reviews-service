@@ -10,12 +10,21 @@
 .reviewTitle {
   margin-top: 0px;
   padding-top: 0px;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
 }
 
 .foundHelpful {
-  margin-bottom: 15%;
-  display: flex;
-  vertical-align: bottom;
+  position: relative;
+  display: block;
+  margin-top: 3%;
+  padding-bottom: 20px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(20,20,20,.65);
 }
 
 .userInfo {
@@ -23,13 +32,22 @@
   display: flex;
   vertical-align: bottom;
   padding-top: 20px;
+  width: 67%;
+  float: right;
+}
+
+.reviewAndStars{
+  // display: inline-block;
+  float: right;
+  width: 67%;
 }
 
 
 .profilePicture {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .nameAndDate {
@@ -41,35 +59,40 @@
   vertical-align: top;
   height: 30%;
   width: 100%;
+  cursor: pointer;
 }
 
 .date {
   display: relative;
   height: 30%;
   width: 100%;
-  text-align: center;
+  text-align: left;
   align-self: center;
   padding-top: 5%;
+  color: rgba(20,20,20,.65);
 }
 .column {
   float: left;
-}
+ }
 
 .left {
   width: 30%;
-  padding-right: 5%;
   clear: right;
-  padding-left: 3%;
+  min-height: 170px;
+  flex-shrink: 1;
+  height: 100%;
 }
 
 .right {
+  float: left;
   height: 10%;
-  width: 60%;
+  min-height: 170px;
+  width: 62%;
+  padding-left: 3%;
+  height: 100%;
 }
 
-.reviewAndStars{
-  display: inline-block
-}
+
 
 .overallStarsText {
   font-family: Arial;
@@ -107,81 +130,225 @@
 }
 
 .Audible {
-  padding-left: 3%;
-  color: rgba(20,20,20,.65);
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  float: right;
+  color: black;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 14px;
   line-height: 22px;
   padding-right: 20px;
-  float: left;
   font-family: "Audible Sans",Arial,sans-serif;
+  border-bottom: 3px solid black;
 }
 
-.Amazon {
+.Audible:hover{
+  color: black;
+}
+
+
+.Canada {
+  outline: none;
+  height: 60px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 200px;
   color: rgba(20,20,20,.65);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 14px;
   line-height: 22px;
-  float: left;
+  float: right;
+  text-align: left;
   font-family: "Audible Sans",Arial,sans-serif;
+  border-bottom: 3px solid rgba(20,20,20,.4);
+}
+
+.displayCanada {
+  outline: none;
+  height: 60px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 200px;
+  color: black;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  float: right;
+  text-align: left;
+  font-family: "Audible Sans",Arial,sans-serif;
+  border-bottom: 3px solid black;
+}
+
+.noDisplayAudible{
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  float: right;
+  color: rgba(20,20,20,.65);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  padding-right: 20px;
+  font-family: "Audible Sans",Arial,sans-serif;
+  border-bottom: 3px solid rgba(20,20,20,.4);
+}
+
+.noDisplayAudible:hover {
+  color: black;
+}
+
+.Canada:hover{
+  color:black;
+}
+
+.formattingDiv {
+  float: right;
+  width: 100px;
+  height: 60px;
 }
 
 .greyBar {
-  color: grey;
-  height: 5px;
-  width: 90%;
-  float: left;
-  padding-left: 3%;
-  padding-right: 10%;
+  border-bottom: 3px solid rgba(20,20,20,.4);
+  width: 590px;
+  height: 57px;
+  float: right;
 }
 
 .reviewShell {
   display: table; text-align: center;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+
 }
 
 .showMore {
-  position:relative;
-  width:150px;
-  bottom:20%;
-  left: 40%;
-  right: 40%;
-  clear: both;
+  line-height: 20px;
+  width: 30%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  padding: 0 16px;
+  white-space: nowrap;
+  background-color: #E8E8E8;
+  font: 400 14px Arial;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 40px;
+  text-align: center;
+  position: relative;
+  left: 30%;
+  right: 30%;
 }
 
+.reviewBodyContainer{
+  align-content: center;
+}
+
+.columnsContainer{
+  align-content: center;
+}
 .reviewBody{
   clear: both;
-  padding-top: 10%;
+  padding-top: 5%;
   padding-bottom: 10%;
+  width: 90%;
 }
 
 .reviewBodyText{
   clear: left;
   display: block;
-  white-space: pre-line
+  white-space: pre-line;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  color: rgba(20,20,20,.65);
+  margin-top: 0;
+  margin-bottom: 15px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
-.foundHelpful{
-  position: relative;
-  display: block;
-  margin-top: 3%;
-}
+
 
 
 
 .filters {
+  width: 50%;
   padding-top: 2%;
   float: right;
-  padding-right: 10%;
+  height: 40px;
+  justify-content: center;
 }
 
-.filterBy {
-  float: left;
-  width: 49%;
+#filterBy {
+  position: relative;
+  bottom: 0;
+  width: 220px;
+  flex: 1;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: rgba(20,20,20,.65);
 }
 
-.sortBy {
+#sortBy {
+  position: relative;
+  bottom: 0;
+  width: 220px;
+  flex: 1;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: rgba(20,20,20,.65);
+}
+
+#filterByLabel{
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(20,20,20,.65);
+}
+
+#sortByLabel{
   float: left;
-  width: 49%;
-  padding-right: 2%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(20,20,20,.65);
+}
+
+.sortByDiv {
+  width: 40%;
+  left: 0;
+  display: inline-block;
+  height: 50px;
+  padding-right: 15px;
+  padding-left: 23px;
+
+}
+.filterByDiv {
+  height: 50px;
+  width: 40%;
+  right: 0;
+  display: inline-block;
 }

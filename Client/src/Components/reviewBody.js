@@ -4,16 +4,24 @@ import Stars from "./stars.js";
 import User from "./user.js";
 
 function reviewBody(props) {
-  const reviewItems = props.reviews.map((review, i) =>
-  <div key={i}>
+  let reviews = [];
+  for (let i = 0; i < props.reviews.length; i++) {
+    let singleReview = props.reviews[i];
+    if (singleReview.display === true) {
+      reviews.push(singleReview);
+    }
+  }
+  reviews = reviews.slice(0, props.itemsToShow);
+  const reviewItems = reviews.map((review, i) =>
+  <div key={i} className="columnsContainers">
     <div className="column left">
         <Stars review={review} />
         <User review={review} />
       </div>
       <div className="column right">
-        <h2 className="reviewTitle">
+        <h4 className="reviewTitle">
           {review.reviewTitle}
-        </h2>
+        </h4>
         <span className="reviewBodyText">
           {review.review}
         </span>

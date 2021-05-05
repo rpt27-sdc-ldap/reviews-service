@@ -9,13 +9,118 @@ import FilterBy from './filterBy';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: [], };
+    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada' };
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
+    this.sortReviews = this.sortReviews.bind(this);
+    this.showMore = this.showMore.bind(this);
+    this.setAudibleClass = this.setAudibleClass.bind(this);
+    this.setCanadaClass = this.setCanadaClass.bind(this);
+  }
+
+  setAudibleClass () {
+    this.setState({Audible: 'Audible', Canada: 'Canada'});
+    this.setState({itemsToShow: 10});
+    for (let i = 0; i < this.state.reviews.length; i++) {
+      if (this.state.reviews[i].location === 'United States') {
+        this.state.reviews[i].display = true;
+      } else {
+        this.state.reviews[i].display = false;
+      }
+    }
+  }
+
+  setCanadaClass () {
+    this.setState({Audible: 'noDisplayAudible', Canada: 'displayCanada'});
+    this.setState({itemsToShow: 10});
+    for (let i = 0; i < this.state.reviews.length; i++) {
+      if (this.state.reviews[i].location === 'Canada') {
+        this.state.reviews[i].display = true;
+      } else {
+        this.state.reviews[i].display = false;
+      }
+    }
+  }
+
+  showMore () {
+    let itemsToShow = this.state.itemsToShow + 10;
+    this.setState({itemsToShow: itemsToShow});
   }
 
   sortReviews (e) {
-    console.log(e);
+    this.setState({itemsToShow: 10});
+    if (e.target.value === 'mostHelpful') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        this.state.reviews.sort((a, b) => {
+          return b.foundHelpful - a.foundHelpful;
+        })
+      }
+      this.setState(this.state.reviews);
+    } else if (e.target.value === 'mostRecent') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        this.state.reviews.sort((a, b) => {
+          return Date.parse(b.date) - Date.parse(a.date);
+        })
+      }
+      this.setState(this.state.reviews);
+    }
+
+    if (e.target.value === '5 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 5) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+    } else if (e.target.value === '4 star only') {
+      console.log('reviews state', this.state.reviews);
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 4) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === '3 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 3) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === '2 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 2) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === '1 star only') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        if (this.state.reviews[i].overallStars === 1) {
+          this.state.reviews[i].display = true;
+        } else {
+          this.state.reviews[i].display = false;
+        }
+      }
+      this.setState(this.state.reviews);
+
+    } else if (e.target.value === 'All Stars') {
+      for (let i = 0; i < this.state.reviews.length; i++) {
+        this.state.reviews[i].display = true;
+      }
+      this.setState(this.state.reviews);
+    }
   }
 
   reviewGetter () {
@@ -24,11 +129,25 @@ class App extends React.Component {
       data: {id: 2},
       method: 'POST',
       success: (data) => {
+        let nameObject = {};
         for (let i = 0; i < data.length; i++) {
           let htmlReview = data[i].review.split('<br>');
           let htmlJoin = htmlReview.join("\n\n");
           data[i].review = htmlJoin;
-          console.log(data[i].review)
+          data[i].display = true;
+
+          if (nameObject[data[i].reviewerName] === undefined) {
+            nameObject[data[i].reviewerName] = 1;
+          } else if (nameObject[data[i].reviewerName] === 1) {
+            data.splice(i, 1);
+          }
+        }
+
+
+        for (let i = 0; i < data.length; i++) {
+          data.sort((a, b) => {
+            return b.foundHelpful - a.foundHelpful;
+          })
         }
         this.setState({reviews: data});
       },
@@ -59,20 +178,19 @@ class App extends React.Component {
     return (
       <div className={"reviewsShell"}>
         <nav>
-          <h2 className={"Audible"}>Audible.com Reviews</h2>
-          <h2 className={"Amazon"}>Amazon.com Reviews</h2>
+          <div className={"formattingDiv"}></div>
+          <div className={"greyBar"}></div>
+          <button className={this.state.Canada} onClick={() => {this.setCanadaClass()}}>Audible.co.ca Reviews</button>
+          <button className={this.state.Audible} onClick={() => {this.setAudibleClass()}}>Audible.com Reviews</button>
         </nav>
-        <span className="greyBar">
-          <hr></hr>
-        </span>
         <div className="filters">
           <SortBy sortReviews={this.sortReviews}/>
-          <FilterBy />
+          <FilterBy sortReviews={this.sortReviews}/>
         </div>
-        <div>
-          <ReviewBody className="reviewBody" reviews={this.state.reviews.slice(0, 20)} />
+        <div className="reviewBodyContainer">
+          <ReviewBody className="reviewBody" itemsToShow={this.state.itemsToShow} reviews={this.state.reviews} />
         </div>
-        <button className="showMore">
+        <button className="showMore" onClick={(() => this.showMore())}>
           Show More
         </button>
       </div>

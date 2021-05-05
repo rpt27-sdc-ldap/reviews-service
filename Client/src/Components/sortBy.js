@@ -4,8 +4,8 @@ const SortBy = (props) => {
 
 
   return (
-    <div className="sortBy">
-      <label htmlFor="sortBy">Sort by:</label>
+    <div className="sortByDiv">
+      <label htmlFor="sortBy" id="sortByLabel">Sort by:</label>
       <select name="sortBy" id="sortBy" onChange={(e) => {props.sortReviews(e)}}>
         <option value="mostHelpful">Most Helpful</option>
         <option value="mostRecent">Most Recent</option>
