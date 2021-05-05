@@ -152,8 +152,8 @@ class App extends React.Component {
     return (
       <div className={"reviewsShell"}>
         <nav>
-          <h2 className={"Audible"}>Audible.com Reviews</h2>
           <h2 className={"Amazon"}>Amazon.com Reviews</h2>
+          <h2 className={"Audible"}>Audible.com Reviews</h2>
         </nav>
         <span className="greyBar">
           <hr></hr>

@@ -9,3 +9,5 @@ compiled/
 
 ## API keys ##
 config.js
+
+dist/
