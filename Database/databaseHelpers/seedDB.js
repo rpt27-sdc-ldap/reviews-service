@@ -86,7 +86,7 @@ function seedDatabase() {
         } else {
           reviewObject.source = 'Audible';
         }
-        if (foundHelpful % 15 === 0) {
+        if (foundHelpful % 5 === 0) {
           reviewObject.location = 'Canada';
         } else {
           reviewObject.location = 'United States';

@@ -20,10 +20,27 @@ class App extends React.Component {
 
   setAudibleClass () {
     this.setState({Audible: 'Audible', Canada: 'Canada'});
+    this.setState({itemsToShow: 10});
+    for (let i = 0; i < this.state.reviews.length; i++) {
+      if (this.state.reviews[i].location === 'United States') {
+        this.state.reviews[i].display = true;
+      } else {
+        this.state.reviews[i].display = false;
+      }
+    }
   }
 
   setCanadaClass () {
     this.setState({Audible: 'noDisplayAudible', Canada: 'displayCanada'});
+    this.setState({itemsToShow: 10});
+    for (let i = 0; i < this.state.reviews.length; i++) {
+      console.log(this.state.reviews[i].location);
+      if (this.state.reviews[i].location === 'Canada') {
+        this.state.reviews[i].display = true;
+      } else {
+        this.state.reviews[i].display = false;
+      }
+    }
   }
 
   showMore () {
