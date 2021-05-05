@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Stars from "./stars.js";
 import User from "./user.js";
+import PhoneUserInfo from "./phoneUserInfo";
 
 function reviewBody(props) {
   let reviews = [];
@@ -17,6 +18,7 @@ function reviewBody(props) {
     <div className="column left">
         <Stars review={review} />
         <User review={review} />
+        <PhoneUserInfo review={review} />
       </div>
       <div className="column right">
         <h4 className="reviewTitle">

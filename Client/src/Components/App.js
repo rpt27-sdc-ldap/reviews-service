@@ -5,6 +5,7 @@ import $ from 'jquery';
 import ReviewBody from './reviewBody';
 import SortBy from './sortBy';
 import FilterBy from './filterBy';
+import Nav from './nav';
 
 class App extends React.Component {
   constructor(props) {
@@ -190,15 +191,7 @@ class App extends React.Component {
   render() {
     return (
       <div className={"reviewsShell"}>
-        <nav>
-          <div className={"formattingDiv"}></div>
-          <div className={"greyBar"}></div>
-          <button className={this.state.Canada} onClick={() => {this.setCanadaClass()}}>Audible.co.ca Reviews</button>
-          <button className={this.state.Audible} onClick={() => {this.setAudibleClass()}}>Audible.com Reviews</button>
-          <div className="customerReviewsDiv">
-            Customer Reviews
-          </div>
-        </nav>
+        <Nav state={this.state} setCanadaClass={this.setCanadaClass} setAudibleClass={this.setAudibleClass}/>
         <div className="filters">
           <SortBy sortReviews={this.sortReviews}/>
           <FilterBy sortReviews={this.sortReviews}/>
