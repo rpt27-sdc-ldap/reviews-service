@@ -9,11 +9,21 @@ import FilterBy from './filterBy';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10 };
+    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada' };
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
     this.showMore = this.showMore.bind(this);
+    this.setAudibleClass = this.setAudibleClass.bind(this);
+    this.setCanadaClass = this.setCanadaClass.bind(this);
+  }
+
+  setAudibleClass () {
+    this.setState({Audible: 'Audible', Canada: 'Canada'});
+  }
+
+  setCanadaClass () {
+    this.setState({Audible: 'noDisplayAudible', Canada: 'displayCanada'});
   }
 
   showMore () {
@@ -152,12 +162,11 @@ class App extends React.Component {
     return (
       <div className={"reviewsShell"}>
         <nav>
-          <h2 className={"Amazon"}>Amazon.com Reviews</h2>
-          <h2 className={"Audible"}>Audible.com Reviews</h2>
+          <div className={"formattingDiv"}></div>
+          <div className={"greyBar"}></div>
+          <button className={this.state.Canada} onClick={() => {this.setCanadaClass()}}>Audible.co.ca Reviews</button>
+          <button className={this.state.Audible} onClick={() => {this.setAudibleClass()}}>Audible.com Reviews</button>
         </nav>
-        <span className="greyBar">
-          <hr></hr>
-        </span>
         <div className="filters">
           <SortBy sortReviews={this.sortReviews}/>
           <FilterBy sortReviews={this.sortReviews}/>
