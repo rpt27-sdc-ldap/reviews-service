@@ -10,13 +10,23 @@ import Nav from './nav';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada' };
+    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyText: 'reviewBodyText'};
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
     this.showMore = this.showMore.bind(this);
     this.setAudibleClass = this.setAudibleClass.bind(this);
     this.setCanadaClass = this.setCanadaClass.bind(this);
+    this.setReviewBodyClass = this.setReviewBodyClassToHidden.bind(this);
+    this.setReviewBodyClassToShowReview = this.setReviewBodyClassToShowReview.bind(this);
+  }
+
+  setReviewBodyClassToHidden() {
+    this.setState({reviewBodyText: 'hiddenReview'});
+  }
+
+  setReviewBodyClassToShowReview() {
+    this.setState({reviewBodyText: 'reviewBodyText'});
   }
 
   setAudibleClass () {
@@ -197,7 +207,7 @@ class App extends React.Component {
           <FilterBy sortReviews={this.sortReviews}/>
         </div>
         <div className="reviewBodyContainer">
-          <ReviewBody className="reviewBody" itemsToShow={this.state.itemsToShow} reviews={this.state.reviews} />
+          <ReviewBody className="reviewBody" reviewBodyText={this.state.reviewBodyText} itemsToShow={this.state.itemsToShow} reviews={this.state.reviews} />
         </div>
         <button className="showMore" onClick={(() => this.showMore())}>
           Show More

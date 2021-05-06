@@ -24,9 +24,10 @@ function reviewBody(props) {
         <h4 className="reviewTitle">
           {review.reviewTitle}
         </h4>
-        <span className="reviewBodyText">
+        <span className={props.reviewBodyText}>
           {review.review}
         </span>
+        <button className="readMore">Read More &#9662;</button>
         <div className="foundHelpful">
           {review.foundHelpful} found this helpful
         </div>
