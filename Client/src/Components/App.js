@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   setReviewBodyClassToHidden() {
-    this.setState({reviewBodyText: 'hiddenReview'});
+    this.setState({reviewBodyClass: 'hiddenReview'});
   }
 
   setReviewBodyClassToShowReview() {

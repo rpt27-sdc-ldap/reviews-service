@@ -28,6 +28,7 @@ function reviewBody(props) {
           {review.review}
         </span>
         <button className="readMore" onClick={() => {props.readMore()}}>Read More &#9662;</button>
+        <button className="hideMe" onClick={() => {props.hideMe()}}>Hide Me &#9652;</button>
         <div className="foundHelpful">
           {review.foundHelpful} found this helpful
         </div>
