@@ -32,6 +32,7 @@ function reviewBody(props) {
         <div className="foundHelpful">
           {review.foundHelpful} found this helpful
         </div>
+      <div className="greyLine"></div>
       </div>
     </div>
 );
