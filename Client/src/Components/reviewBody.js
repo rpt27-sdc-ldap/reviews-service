@@ -24,11 +24,11 @@ function reviewBody(props) {
         <h4 className="reviewTitle">
           {review.reviewTitle}
         </h4>
-        <span className={props.reviewBodyClass}>
+        <span className={review.reviewBodyClass || props.reviewBodyClass}>
           {review.review}
         </span>
-        <button className="readMore" onClick={() => {props.readMore()}}>Read More &#9662;</button>
-        <button className="hideMe" onClick={() => {props.hideMe()}}>Hide Me &#9652;</button>
+        <button className={review.readMoreDisplay || props.readMoreDisplay} onClick={() => {props.readMore(i)}}>Read More &#9662;</button>
+        <button className={review.hideMeDisplay || props.hideMeDisplay} onClick={() => {props.hideMe(i)}}>Hide Me &#9652;</button>
         <div className="foundHelpful">
           {review.foundHelpful} found this helpful
         </div>

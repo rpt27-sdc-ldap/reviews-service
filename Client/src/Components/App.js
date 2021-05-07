@@ -10,7 +10,7 @@ import Nav from './nav';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'hiddenReview'};
+    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'hiddenReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
     this.reviewGetter = this.reviewGetter.bind(this);
     this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
@@ -21,12 +21,20 @@ class App extends React.Component {
     this.setReviewBodyClassToShowReview = this.setReviewBodyClassToShowReview.bind(this);
   }
 
-  setReviewBodyClassToHidden() {
-    this.setState({reviewBodyClass: 'hiddenReview'});
+  setReviewBodyClassToHidden(i) {
+    let newReviews = this.state.reviews.slice(0);
+    newReviews[i].readMoreDisplay = 'readMore';
+    newReviews[i].hideMeDisplay = 'hideHideMeButton';
+    newReviews[i].reviewBodyClass = 'hiddenReview';
+    this.setState({reviews: newReviews});
   }
 
-  setReviewBodyClassToShowReview() {
-    this.setState({reviewBodyClass: 'reviewBodyText'});
+  setReviewBodyClassToShowReview(i) {
+    let newReviews = this.state.reviews.slice(0);
+    newReviews[i].readMoreDisplay = 'hideReadMoreButton';
+    newReviews[i].hideMeDisplay = 'hideMe';
+    newReviews[i].reviewBodyClass = 'reviewBodyText';
+    this.setState({reviews: newReviews});
   }
 
   setAudibleClass () {
@@ -207,7 +215,7 @@ class App extends React.Component {
           <FilterBy sortReviews={this.sortReviews}/>
         </div>
         <div className="reviewBodyContainer">
-          <ReviewBody className="reviewBody" readMore={this.setReviewBodyClassToShowReview} hideMe={this.setReviewBodyClassToHidden} reviewBodyClass={this.state.reviewBodyClass} itemsToShow={this.state.itemsToShow} reviews={this.state.reviews} />
+          <ReviewBody className="reviewBody" readMoreDisplay={this.state.readMoreDisplay} hideMeDisplay={this.state.hideMeDisplay} readMore={this.setReviewBodyClassToShowReview} hideMe={this.setReviewBodyClassToHidden} reviewBodyClass={this.state.reviewBodyClass} itemsToShow={this.state.itemsToShow} reviews={this.state.reviews} />
         </div>
         <button className="showMore" onClick={(() => this.showMore())}>
           Show More
