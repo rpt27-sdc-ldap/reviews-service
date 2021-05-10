@@ -1,3 +1,4 @@
+//visual stars componenet
 .Stars {
  align-items: center;
  color: #FFA000;
@@ -6,7 +7,7 @@
  justify-content: left;
 }
 
-
+//title of review
 .reviewTitle {
   margin-top: 0px;
   padding-top: 0px;
@@ -16,6 +17,7 @@
   line-height: 28px;
 }
 
+//example {27 found this helpful}
 .foundHelpful {
   position: relative;
   display: block;
@@ -26,7 +28,7 @@
   line-height: 16px;
   color: rgba(20,20,20,.65);
 }
-
+//user name and date
 .userInfo {
   height: 50%;
   display: flex;
@@ -36,13 +38,14 @@
   float: right;
 }
 
+//div for stars and info
 .reviewAndStars{
   // display: inline-block;
   float: right;
   width: 67%;
 }
 
-
+//profile picture
 .profilePicture {
   height: 40px;
   width: 40px;
@@ -50,10 +53,12 @@
   cursor: pointer;
 }
 
+//name and date
 .nameAndDate {
   vertical-align: left;
 }
 
+//username
 .userName {
   display: relative;
   vertical-align: top;
@@ -62,6 +67,7 @@
   cursor: pointer;
 }
 
+//date
 .date {
   display: relative;
   height: 30%;
@@ -71,10 +77,15 @@
   padding-top: 5%;
   color: rgba(20,20,20,.65);
 }
+
+//left colum is stars and user info
+//right column is review body and titles
 .column {
   float: left;
  }
 
+
+ //left colum is stars and user info
 .left {
   width: 30%;
   clear: right;
@@ -83,6 +94,7 @@
   height: 100%;
 }
 
+//right colum is review body and titles
 .right {
   float: left;
   height: 10%;
@@ -93,42 +105,49 @@
 }
 
 
-
+//words 'overall Stars'
 .overallStarsText {
   font-family: Arial;
   color: rgba(20,20,20,.65);
   font-size: 14px;
 }
+
+//overalStars graphic
 .overallStars {
   font-size: 18px;
   margin-top: 2%;
   display: inline-block
 }
 
+//words performance stars
 .performanceStarsText {
   font-family: Arial;
   color: rgba(20,20,20,.65);
   font-size: 14px;
 }
 
+//performance stars graphic
 .performanceStars{
   font-size: 18px;
   margin-top: 2%;
   display: inline-block;
 }
 
+//words story stars
 .storyStarsText{
   font-family: Arial;
   color: rgba(20,20,20,.65);
   font-size: 14px;
 }
 
+//story stars graphic
 .storyStars{
   font-size: 18px;
   margin-top: 2%;
   display: inline-block;
 }
 
+//audible title at top of page for filtering reviews
 .Audible {
   outline: none;
   border: none;
@@ -146,11 +165,13 @@
   border-bottom: 3px solid black;
 }
 
+//on hovering on audible
 .Audible:hover{
   color: black;
 }
 
-
+//audible.co.ca filter at top of page
+//for when it audibe.co.ca is active
 .Canada {
   outline: none;
   height: 60px;
@@ -168,6 +189,7 @@
   border-bottom: 3px solid rgba(20,20,20,.4);
 }
 
+//for when audible.co.ca has be clciked
 .displayCanada {
   outline: none;
   height: 60px;
@@ -185,6 +207,7 @@
   border-bottom: 3px solid black;
 }
 
+//for when audible filter is not active
 .noDisplayAudible{
   outline: none;
   border: none;
@@ -202,20 +225,24 @@
   border-bottom: 3px solid rgba(20,20,20,.4);
 }
 
+//when hovering on audible when it's not displayed
 .noDisplayAudible:hover {
   color: black;
 }
 
+//when hovering on .ca.co when is not dipslayed
 .Canada:hover{
   color:black;
 }
 
+//spacing for nav bar
 .formattingDiv {
   float: right;
   width: 100px;
   height: 60px;
 }
 
+//grey line underneath filters
 .greyBar {
   border-bottom: 3px solid rgba(20,20,20,.4);
   width: 590px;
@@ -223,6 +250,7 @@
   float: right;
 }
 
+//div containing all other divs
 .reviewShell {
   display: table; text-align: center;
   position: relative;
@@ -232,6 +260,7 @@
 
 }
 
+//show more button on bottom of screen
 .showMore {
   line-height: 20px;
   width: 30%;
@@ -257,13 +286,16 @@
   right: 30%;
 }
 
+//div conataining all reviews
 .reviewBodyContainer{
   align-content: center;
 }
-
+//div containing columns
 .columnsContainer{
   align-content: center;
 }
+
+//div that contains each individual review
 .reviewBody{
   clear: both;
   padding-top: 5%;
@@ -271,6 +303,7 @@
   width: 90%;
 }
 
+// text of review
 .reviewBodyText{
   clear: left;
   display: block;
@@ -291,7 +324,7 @@
 
 
 
-
+//div for drop down filters
 .filters {
   width: 50%;
   padding-top: 2%;
@@ -300,6 +333,7 @@
   justify-content: center;
 }
 
+//filter by stars
 #filterBy {
   position: relative;
   bottom: 0;
@@ -311,6 +345,7 @@
   color: rgba(20,20,20,.65);
 }
 
+//sort by most helpful/ most recent
 #sortBy {
   position: relative;
   bottom: 0;
@@ -322,6 +357,7 @@
   color: rgba(20,20,20,.65);
 }
 
+//'filter by' text
 #filterByLabel{
   font-weight: 400;
   font-size: 12px;
@@ -329,6 +365,7 @@
   color: rgba(20,20,20,.65);
 }
 
+//sort by' text
 #sortByLabel{
   float: left;
   font-weight: 400;
@@ -337,6 +374,7 @@
   color: rgba(20,20,20,.65);
 }
 
+//div for sortby filter
 .sortByDiv {
   width: 40%;
   left: 0;
@@ -346,6 +384,8 @@
   padding-left: 23px;
 
 }
+
+//div for filterby filter
 .filterByDiv {
   height: 50px;
   width: 40%;
@@ -353,50 +393,66 @@
   display: inline-block;
 }
 
+//phone view
 .customerReviewsDiv{
   display: none;
 }
 
+//phone view element
 .phoneUserInfo {
   display: none;
 }
 
-
+///phone view element
 .readMore {
   display: none;
 }
 
+//phone view element
 .hideHideMeButton{
   display: none;
 }
 
+//phone view formatting
 @media (max-width: 500px) {
+  //'Audible.com Reiews'
   .Audible {
     width: 48%;
   }
+  //when audible.com filter is not active
   .noDisplayAudible {
     width: 48%;
   }
+  //'Audible.co.ca Reviews'
   .displayCanada{
     width: 48%;
   }
+   //'Audible.co.ca Reviews -- because when setting state fucntion sometimes uses displayCanada as class and sometimes uses Canada as class -- each class does the same thing'
   .Canada{
     width: 48%;
   }
+
+  //for when 'Audible.co.ca' is not active
   .noDisplayCanada{
     width: 48%;
   }
 
+  //div containing reviews
   .reviewsShell {
     width: 100%;
     height: 100%;
   }
+  //grey bar underneath audible and audible.ca filters
   .greyBar{
     display: none
   }
+
+  //pushes audible and audible.ca to the left
   .formattingDiv {
     width: 4%;
   }
+
+  //sort by and filterby
   .filters {
     width: 100%;
     height: 130px;
@@ -404,6 +460,7 @@
     float: right;
     justify-content: center;
   }
+  //div for sortby
   .sortByDiv {
     width: 100%;
     height: 65px;
@@ -412,6 +469,7 @@
     padding-right: 0px;
     padding-left: 0px;
   }
+  //dropdown for sortby
   #sortBy {
     width: 95%;
     position: relative;
@@ -423,6 +481,7 @@
     color: rgba(20,20,20,.65);
     float: left;
   }
+  //text for sortby
   #sortByLabel{
     float: left;
     font-weight: 400;
@@ -431,6 +490,7 @@
     color: rgba(20,20,20,.65);
     padding-bottom: 5px;
   }
+  //filter by dive
   .filterByDiv{
     width: 100%;
     height: 65px;
@@ -439,6 +499,7 @@
     padding-right: 0px;
     padding-left: 0px;
   }
+  //drop down for filter by
   #filterBy{
     width: 95%;
     position: relative;
@@ -450,6 +511,7 @@
     color: rgba(20,20,20,.65);
     float: left;
   }
+  //text for filterby label
   #filterByLabel{
     float: left;
     font-weight: 400;
@@ -459,6 +521,7 @@
     padding-bottom: 5px;
   }
 
+  //customer reviews text
   .customerReviewsDiv{
     font-weight: bolder;
     font-size: 24px;
@@ -468,60 +531,62 @@
     padding-top: 24%;
     margin: 0;
   }
-
+  //stars and userinfo
   .reviewAndStars{
     float: left;
   }
-
+  //don't display 'overall stars' text
   .overallStarsText {
     display: none;
   }
+  //overall stars graphic
   .overallStars {
     font-size: 16px;
     margin-top: 10%;
     display: inline-block
   }
-
+  //don't display performance stars in phone view
   .performanceStarsText {
     display: none;
   }
-
+  //don't dispaly performance stars in phone view
   .performanceStars{
     display: none;
   }
-
+  //don't dispaly story stars in phone view
   .storyStarsText{
     display: none;
   }
-
+  //don't dispaly story stars in phone view
   .storyStars{
     display: none;
   }
-
+  //don't display profile picture in phone view
   .profilePicture {
     display: none;
   }
-
+  //don't display user div in phone view
   .user {
     display: none;
   }
-
+  //don't dispaly name and date div in phone view
   .nameAndDate {
     display: none
   }
-
+  //don't display username div in phone view
   .userName {
     display: none;
   }
-
+  //don't display date div in phone view
   .date {
     display: none;
   }
-
+  //don't display userInfo in phone view
   .userInfo {
     display: none;
   }
 
+  //formatting for all user info
   .phoneUserInfo {
     display: block;
     width: 100%;
@@ -538,18 +603,24 @@
     line-height: 20px;
   }
 
+
+  //'by' text in user info
   .By {
     color: rgba(20,20,20,.65)
   }
 
+  //formatting for phone view user name
   .phoneUserName {
     color: black;
   }
 
+  //formatting for date text in phone view
   .phoneOnDate{
     color: rgba(20,20,20,.65)
   }
 
+
+  //left column is 100% in phone view
   .left {
     width: 100%;
     height: 10%;
@@ -557,6 +628,7 @@
     flex-shrink: 1;
   }
 
+  //right colum is below left column in phone view
   .right {
     height: 10%;
     flex-shrink: 1;
@@ -566,6 +638,8 @@
     padding-left: 0;
   }
 
+
+  //review title is smaller in phone view
   .reviewTitle {
     margin-top: 0px;
     font-style: italic;
@@ -574,6 +648,8 @@
     padding-top: 1%;
     margin-bottom: 0px;
   }
+
+  //formatting for review body text in phone view
   .reviewBodyText{
     margin-top: 5px;
     background-color: #FFF;
@@ -583,6 +659,7 @@
     line-height: 24px;
   }
 
+  //readmore button in phone view
   .readMore{
     display: block;
     padding: 0;
@@ -590,14 +667,14 @@
     background: none;
   }
 
-
+  //hide me button in phone view
   .hideMe {
     display: block;
     padding: 0;
     border: none;
     background: none;
   }
-
+  //dimension of hidden review in phone view
   .hiddenReview{
     margin-top: 5px;
     height: 60px;
@@ -620,21 +697,21 @@
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   }
-
+  //hide read more button when hide me butto nsi active
   .hideReadMoreButton{
     display: none;
   }
-
+  //hide hideme button when readmore is active
   .hideHideMeButton{
     display: none;
   }
-
+  //grey line between reviews
   .greyLine {
     width: 100%;
     height: 1%;
     border-bottom: 2px solid rgba(20,20,20,.25);
   }
-
+  //show more button 
   .showMore {
     float: left;
     line-height: 20px;
