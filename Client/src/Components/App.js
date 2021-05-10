@@ -21,19 +21,28 @@ class App extends React.Component {
     this.setReviewBodyClassToShowReview = this.setReviewBodyClassToShowReview.bind(this);
   }
 
-  setReviewBodyClassToHidden(i) {
+  setReviewBodyClassToHidden(id) {
     let newReviews = this.state.reviews.slice(0);
-    newReviews[i].readMoreDisplay = 'readMore';
-    newReviews[i].hideMeDisplay = 'hideHideMeButton';
-    newReviews[i].reviewBodyClass = 'hiddenReview';
+    for (let i = 0; i < newReviews.length; i++) {
+      if (newReviews[i].reviewerId === id) {
+        newReviews[i].readMoreDisplay = 'readMore';
+        newReviews[i].hideMeDisplay = 'hideHideMeButton';
+        newReviews[i].reviewBodyClass = 'hiddenReview';
+      }
+    }
     this.setState({reviews: newReviews});
   }
 
-  setReviewBodyClassToShowReview(i) {
+  setReviewBodyClassToShowReview(id) {
+    console.log(id);
     let newReviews = this.state.reviews.slice(0);
-    newReviews[i].readMoreDisplay = 'hideReadMoreButton';
-    newReviews[i].hideMeDisplay = 'hideMe';
-    newReviews[i].reviewBodyClass = 'reviewBodyText';
+    for (let i = 0; i < newReviews.length; i++) {
+      if (newReviews[i].reviewerId === id) {
+        newReviews[i].readMoreDisplay = 'hideReadMoreButton';
+        newReviews[i].hideMeDisplay = 'hideMe';
+        newReviews[i].reviewBodyClass = 'reviewBodyText';
+      }
+    }
     this.setState({reviews: newReviews});
   }
 
@@ -158,7 +167,7 @@ class App extends React.Component {
   reviewGetter () {
     $.ajax({
       url: "http://localhost:4000/reviews",
-      data: {id: 97},
+      data: {id: 42},
       method: 'POST',
       success: (data) => {
         let nameObject = {};
@@ -171,7 +180,7 @@ class App extends React.Component {
           if (nameObject[data[i].reviewerName] === undefined) {
             nameObject[data[i].reviewerName] = 1;
           } else if (nameObject[data[i].reviewerName] === 1) {
-            data.splice(i, 1);
+            data.splice(i, 1)
           }
         }
 
