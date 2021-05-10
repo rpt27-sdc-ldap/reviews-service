@@ -638,7 +638,7 @@
     flex-shrink: 1;
     width: 100%;
     float: left;
-    min-height: 150px;
+    min-height: auto;
     padding-left: 0;
   }
 
@@ -655,11 +655,21 @@
 
   //formatting for review body text in phone view
   .reviewBodyText{
+    clear: left;
+    display: block;
+    white-space: pre-line;
+    color: rgba(20,20,20,.65);
+    margin-bottom: 15px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
     margin-top: 5px;
     background-color: #FFF;
     font-family: "Audible Sans",Arial,sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 24px;
   }
 
