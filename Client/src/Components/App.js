@@ -197,23 +197,22 @@ class App extends React.Component {
       }
     })
   }
-  carouselReviewsGetter () {
-    $.ajax({
-      url: "http://localhost:4000/reviews/carouselReviews",
-      data: {ids: [1, 2, 3, 4, 5, 6, 7]},
-      method: 'POST',
-      success: (data) => {
-        this.setState({carouselReviews: data})
-      },
-      error: (error) => {
-        console.log('error', error);
-      }
-    })
-  }
+  // carouselReviewsGetter () {
+  //   $.ajax({
+  //     url: "http://localhost:4000/reviews/carouselReviews",
+  //     data: {ids: [1, 2, 3, 4, 5, 6, 7]},
+  //     method: 'POST',
+  //     success: (data) => {
+  //       this.setState({carouselReviews: data})
+  //     },
+  //     error: (error) => {
+  //       console.log('error', error);
+  //     }c
+  //   })
+  // }
 
   componentDidMount() {
     this.reviewGetter();
-    this.carouselReviewsGetter();
   }
   render() {
     return (
