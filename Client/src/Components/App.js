@@ -158,7 +158,7 @@ class App extends React.Component {
   reviewGetter () {
     $.ajax({
       url: "http://localhost:4000/reviews",
-      data: {id: 99},
+      data: {id: 97},
       method: 'POST',
       success: (data) => {
         let nameObject = {};
