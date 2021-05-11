@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'hiddenReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
     this.reviewGetter = this.reviewGetter.bind(this);
-    this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
+    // this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
     this.showMore = this.showMore.bind(this);
     this.setAudibleClass = this.setAudibleClass.bind(this);

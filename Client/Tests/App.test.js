@@ -11,13 +11,24 @@ import $ from 'jquery';
 
 // jest.mock('$');
 
-it('should update Dom', async () => {
+it('should update Dom with correct state', async () => {
 
+  let fakeResponse;
+  $.ajax = jest.fn().mockImplementation(() => {
+    fakeResponse = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'hiddenReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
+    return Promise.resolve(fakeResponse);
+  });
   const wrapper = shallow(<App />);
   // const div = wrapper.find(this.state);
   const result = wrapper.state();
-  expect(result).toStrictEqual({reviews: '', carouselReviews: ''});
+  expect(result).toStrictEqual(fakeResponse);
+});
 
+it('should console.log an error if no response comes from request', async () => {
+  $.ajax = jest.fn().mockImplementation(() => {
+    fakeResponse = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'hiddenReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
+    return Promise.resolve(fakeResponse);
+  });
 });
 
 
