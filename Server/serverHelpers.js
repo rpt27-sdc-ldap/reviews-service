@@ -26,11 +26,13 @@ const reviewGetter = (req, res, id) => {
           res.send(data);
         })
         .catch((error) => {
+          res.setStatus(500)
           res.send(error);
         })
     })
     .catch((error) => {
-      console.log(error);
+      res.setStatus(500);
+      res.send(error);
     })
 }
 
@@ -60,11 +62,13 @@ const arrayOfIdsReviewGetter = (req, res, idArray) => {
           res.send(arrayOfRecommendedReviews);
         })
         .catch((error) => {
+          res.setStatus(500);
           res.send(error);
         })
     })
     .catch((error) => {
-      console.log(error);
+      res.setStatus(500);
+      res.send(error);
     })
 }
 

@@ -91,8 +91,8 @@ function seedDatabase() {
         } else {
           reviewObject.location = 'United States';
         }
-        let numberOfParagraphs = Math.floor(Math.random() * 4);
-        let numberOfSentences = Math.floor(Math.random() * 8);
+        let numberOfParagraphs = Math.floor(Math.random() * 3) + 1;
+        let numberOfSentences = Math.floor(Math.random() * 7) + 1;
         let conditional = Math.random() * 5;
         if (conditional < 4) {
           reviewObject.review = lorem.generateParagraphs(numberOfParagraphs);
