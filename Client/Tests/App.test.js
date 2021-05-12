@@ -20,3 +20,9 @@ it ('should have a filters class with 2 children', async () => {
   expect(app.find('.filters').children()).toHaveLength(2);
 })
 
+test('shallow wrapper instance should not be null', () => {
+  const app = shallow(<App />);
+  const instance = app.instance();
+  expect(instance).toBeInstanceOf(App);
+});
+
