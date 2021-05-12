@@ -12,3 +12,11 @@ it ('should initialize App with an empty array of reviews', async () => {
   let reviewArray = app.state('reviews');
   expect(reviewArray).toStrictEqual([]);
 })
+
+it ('should have a filters class with 2 children', async () => {
+  let mockGetter = jest.fn();
+  App.prototype.reviewGetter = mockGetter;
+  let app = mount(<App />);
+  expect(app.find('.filters').children()).toHaveLength(2);
+})
+
