@@ -9,6 +9,6 @@ it ('should initialize App with an empty array of reviews', async () => {
   let mockGetter = jest.fn();
   App.prototype.reviewGetter = mockGetter;
   let app = mount(<App />);
-  let reviewArray = app.state('reviews').toString();
-  expect(reviewArray).toEqual('[]');
+  let reviewArray = app.state('reviews');
+  expect(reviewArray).toStrictEqual([]);
 })
