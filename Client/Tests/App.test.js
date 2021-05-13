@@ -3,22 +3,31 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import "@babel/polyfill";
 import App from '../src/Components/App.js';
+import mockSuccessAjax from './mockSuccessAjax';
+import successData  from './successData.json';
 
 
 it ('should initialize App with an empty array of reviews', async () => {
-  // let mockGetter = jest.fn();
-  // App.prototype.reviewGetter = mockGetter;
+  let mockGetter = jest.fn();
+  App.prototype.reviewGetter = mockGetter;
   let app = mount(<App />);
   let reviewArray = app.state('reviews');
   expect(reviewArray).toStrictEqual([]);
 })
 
-it ('should render revierShell if reviewGetter returns null', async () => {
+it ('should render reviewShell if reviewGetter returns null', () => {
   let mockGetter = jest.fn(() => {return 'error'});
   App.prototype.reviewGetter = mockGetter;
   let app = shallow(<App />)
-  let wait = await mockGetter();
-  expect(app.exists('.reviewsShell').toEqual(true));
+  mockGetter();
+  expect(app.find('.reviewsShell').children()).toHaveLength(4);
+})
+
+it ('should render data if reviewGetter returns data', () => {
+  let app = mount(<App />);
+  let data = mockSuccessAjax(successData);
+  app.setState({reviews: data});
+  expect(app.find('.reviewBody').children()).toHaveLength(11);
 })
 
 it ('should have a filters class with 2 children', async () => {
