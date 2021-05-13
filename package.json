@@ -4,7 +4,7 @@
   "description": "FEC Reviews",
   "main": "database.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --collect-coverage",
     "start": "nodemon Server/server.js",
     "build": "webpack --config webpack.config.js",
     "webpack": "webpack --watch"
