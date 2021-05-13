@@ -63,6 +63,16 @@ it ('should call setCanadaClass', () => {
   expect(spy).toHaveBeenCalled();
 })
 
+it ('should register click for showMore', () => {
+  let showMore = jest.fn();
+  App.prototype.showMore = showMore;
+  const app = shallow(<App />);
+  let showMoreButton = app.find('.showMore');
+  showMoreButton.simulate('click');
+  expect(showMore).toHaveBeenCalled();
+  expect((showMoreButton).exists()).toBe(true);
+})
+
 
 
 

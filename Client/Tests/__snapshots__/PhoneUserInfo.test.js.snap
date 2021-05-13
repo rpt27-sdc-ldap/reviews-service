@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapShot 1`] = `
+<div
+  className="phoneUserInfo"
+>
+  <div
+    className="By"
+  >
+    By
+  </div>
+  <div
+    className="phoneUserName"
+  />
+  <div
+    className="phoneOnDate"
+  >
+    on 
+    05-13-2021
+  </div>
+</div>
+`;
