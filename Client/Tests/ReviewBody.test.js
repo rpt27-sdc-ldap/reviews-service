@@ -27,9 +27,21 @@ it('should have reviewbody class of hiddenReview if hidden review is passed as p
   expect(reviewBodyClassDiv.exists()).toBe(true);
 })
 
-it ('shouldCall read more function if user clicks the readmore button', () => {
+it ('should Call read more function if user clicks the readmore button', () => {
   let reviews = mockSuccessAjax(successData);
+  reviews = reviews.slice(0, 1);
   let readMoreFunc = jest.fn();
   let reviewBody = shallow(<ReviewBody className="hiddenReview" reviews={reviews} reviewBodyClass={'hiddenReview'} readMoreDisplay={'readMore'} readMore={readMoreFunc}/>);
-  
+  reviewBody.find('.readMore').simulate('click');
+  expect(readMoreFunc.mock.calls.length).toEqual(1);
+})
+
+it ('should not call readmore function if user clicks the hideme button', () => {
+  let reviews = mockSuccessAjax(successData);
+  reviews = reviews.slice(0, 1);
+  let readMoreFunc = jest.fn();
+  let hideMeFunc = jest.fn();
+  let reviewBody = shallow(<ReviewBody className="hiddenReview" reviews={reviews} reviewBodyClass={'hiddenReview'} hideMeDisplay={'hideMe'} readMore={readMoreFunc} hideMe={hideMeFunc}/>);
+  reviewBody.find('.hideMe').simulate('click');
+  expect(readMoreFunc.mock.calls.length).toEqual(0);
 })
