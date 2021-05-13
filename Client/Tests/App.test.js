@@ -5,6 +5,7 @@ import "@babel/polyfill";
 import App from '../src/Components/App.js';
 import mockSuccessAjax from './mockSuccessAjax';
 import successData  from './successData.json';
+import renderer from 'react-test-renderer'
 
 
 it ('should initialize App with an empty array of reviews', async () => {
@@ -28,7 +29,11 @@ it ('should render data if reviewGetter returns data', () => {
   let data = mockSuccessAjax(successData);
   app.setState({reviews: data});
   expect(app.find('.reviewBody').children()).toHaveLength(11);
-  expect(app).toMatchSnapshot();
+})
+
+it ('app body should match snapshot', () => {
+  const tree = renderer.create(<App />).toJSON();
+  expect(tree).toMatchSnapshot();
 })
 
 
