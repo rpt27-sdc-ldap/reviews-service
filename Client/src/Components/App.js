@@ -193,7 +193,7 @@ class App extends React.Component {
         this.setState({reviews: data});
       },
       error: (error) => {
-        console.log('error', error);
+        this.setState({reviews: []})
       }
     })
   }

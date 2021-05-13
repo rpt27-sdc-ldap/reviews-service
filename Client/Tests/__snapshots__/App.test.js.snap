@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render data if reviewGetter returns data 1`] = `ReactWrapper {}`;

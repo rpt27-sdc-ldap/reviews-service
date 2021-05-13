@@ -28,6 +28,14 @@ it ('should render data if reviewGetter returns data', () => {
   let data = mockSuccessAjax(successData);
   app.setState({reviews: data});
   expect(app.find('.reviewBody').children()).toHaveLength(11);
+  expect(app).toMatchSnapshot();
+})
+
+
+it ('should render page if reivewBody returns error', () => {
+  let app = mount(<App />);
+  app.setState({reviews: []});
+  expect(app.find('.reviewBody').children()).toHaveLength(1);
 })
 
 it ('should have a filters class with 2 children', async () => {
@@ -49,6 +57,8 @@ it ('should call setCanadaClass', () => {
   app.instance().setCanadaClass();
   expect(spy).toHaveBeenCalled();
 })
+
+
 
 
 
