@@ -8,7 +8,7 @@
     "start": "nodemon Server/server.js",
     "build": "webpack --config webpack.config.js",
     "webpack": "webpack --watch",
-    "lint": "eslint"
+    "lint": "eslint ./"
   },
   "keywords": [],
   "author": "",
