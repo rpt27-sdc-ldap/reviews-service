@@ -1,3 +1,11 @@
+#webpack configuration
 /webpack.config.js
 
+#test folder
 /Client/Tests
+
+#bundle
+/dist/bundle.js
+
+#seed DB
+/Server/databaseHelperFunctions/seedDB.js

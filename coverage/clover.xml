@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1620942780943" clover="3.2.0">
-  <project timestamp="1620942780943" name="All files">
+<coverage generated="1621024015281" clover="3.2.0">
+  <project timestamp="1621024015281" name="All files">
     <metrics statements="163" coveredstatements="61" conditionals="50" coveredconditionals="8" methods="32" coveredmethods="18" elements="245" coveredelements="87" complexity="0" loc="163" ncloc="163" packages="2" files="10" classes="10"/>
     <package name="Tests">
       <metrics statements="16" coveredstatements="14" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="2"/>
@@ -151,9 +151,9 @@
       <file name="nav.js" path="/Users/jametevia/rpt/reviews/Client/src/Components/nav.js">
         <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="5" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
       </file>
       <file name="phoneUserInfo.js" path="/Users/jametevia/rpt/reviews/Client/src/Components/phoneUserInfo.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
