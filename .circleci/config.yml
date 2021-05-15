@@ -13,7 +13,12 @@ jobs:
             - run: npm install
       # - run: dockerize -wait http://127.0.0.1:4000 -timeout 10s
       - run: sleep 5
-      - run: echo 127.0.0.1:4000 devhost | sudo tee -a /etc/hosts
+
+    - run: echo 127.0.0.1 devhost | sudo tee -a /etc/hosts
+
+      - run: |
+      sudo -u root createuser -h localhost --superuser ubuntu &&
+      sudo createdb -h localhost test_db
       - run: ps aux
       - run: npm run test
 
