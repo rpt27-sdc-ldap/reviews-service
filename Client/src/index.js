@@ -8,4 +8,4 @@ class Welcome extends React.Component {
     return <App />;
   }
 }
-ReactDOM.render(<Welcome />, document.getElementById("root"));
+ReactDOM.render(<Welcome />, document.getElementById("reviews"));

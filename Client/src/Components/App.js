@@ -35,7 +35,6 @@ class App extends React.Component {
   }
 
   setReviewBodyClassToShowReview(id) {
-    console.log(id);
     let newReviews = this.state.reviews.slice(0);
     for (let i = 0; i < newReviews.length; i++) {
       if (newReviews[i].reviewerId === id) {
@@ -166,7 +165,7 @@ class App extends React.Component {
   }
 
   reviewGetter() {
-    
+
     const query = new URLSearchParams(location.search);
     const id = query.get('bookId');
     fetch(`http://localhost:4000/reviews/${id}`)
