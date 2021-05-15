@@ -16,7 +16,7 @@ it ('should initialize App with an empty array of reviews', async () => {
   expect(reviewArray).toStrictEqual([]);
 })
 
-it ('should render reviewShell if reviewGetter returns null', () => {
+it ('should render reviewShell if reviewGetter returns error', () => {
   let mockGetter = jest.fn(() => {return 'error'});
   App.prototype.reviewGetter = mockGetter;
   let app = shallow(<App />)

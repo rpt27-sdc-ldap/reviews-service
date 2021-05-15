@@ -11,7 +11,7 @@ import Nav from './nav';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'hiddenReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
+    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'defaultReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
     this.reviewGetter = this.reviewGetter.bind(this);
     // this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
@@ -28,7 +28,7 @@ class App extends React.Component {
       if (newReviews[i].reviewerId === id) {
         newReviews[i].readMoreDisplay = 'readMore';
         newReviews[i].hideMeDisplay = 'hideHideMeButton';
-        newReviews[i].reviewBodyClass = 'hiddenReview';
+        newReviews[i].reviewBodyClass = 'defaultReview';
       }
     }
     this.setState({reviews: newReviews});
