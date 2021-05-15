@@ -18,7 +18,6 @@ const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter
 //______It returns {reviewerName: String,reviewerId: Number,review: String,urlString: String,bookName: String,bookId: Number,date: Date,overallStars: Number,performanceStars: Number,storyStars: Number,title: String,foundHelpful: Number,source: String, location: String}
 //______This route fires on page load since this is a route integral to the initial structure of the page
 app.get('/reviews/:bookId', (req, res) => {
-  console.log('hi', req.params.bookId);
   const id = req.params.bookId;
   reviewGetter(req, res, id);
 });
