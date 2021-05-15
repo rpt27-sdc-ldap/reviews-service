@@ -12,7 +12,8 @@ jobs:
           steps:
             - run: npm install
       # - run: dockerize -wait http://127.0.0.1:4000 -timeout 10s
-      - run: sleep 5 
+      - run: sleep 5
+      - run: echo 127.0.0.1:4000 devhost | sudo tee -a /etc/hosts
       - run: ps aux
       - run: npm run test
 
