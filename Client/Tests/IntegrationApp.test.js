@@ -3,7 +3,7 @@ require("babel-polyfill");
 const app = require("../src/Components/App.js");
 
 
-Thread.sleep(5);
+
 it ('should fetch a created user', async () => {
     const response = await request.post("/reviews").send({id: 9});
     expect(response.body.length).toBeGreaterThan(0);
