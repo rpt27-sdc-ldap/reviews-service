@@ -11,9 +11,11 @@ it ('should render nameAndDate if date is missing', () =>{
   const data = mockSuccessAjax(successData);
   let review = data.slice(0, 1);
   review = review[0];
+  let realDate = review.date;
   review.date = undefined;
   const userBody = shallow(<User review={review} />);
   expect(userBody.find('.nameAndDate').exists()).toBe(true);
+  review.date = realDate;
 })
 
 it ('should render name and date if date exists', () => {
