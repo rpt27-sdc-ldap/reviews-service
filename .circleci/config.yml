@@ -7,11 +7,11 @@ jobs:
       name: node/default
       tag: '10.22.1'
     steps:
-     - run:
-        command: dockerize -wait tcp://127.0.0.1:4000 -timeout 120s
       - checkout
       - node/with-cache:
           steps:
             - run: npm install
+            - run:
+                dockerize -wait tcp://127.0.0.1:4000 -timeout 120s
       - run: npm run test
 
