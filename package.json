@@ -4,10 +4,11 @@
   "description": "FEC Reviews",
   "main": "database.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --collect-coverage",
     "start": "nodemon Server/server.js",
     "build": "webpack --config webpack.config.js",
-    "webpack": "webpack --watch"
+    "webpack": "webpack --watch",
+    "lint": "eslint ./"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "babel-polyfill": "^6.26.0",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
+    "circleci": "^0.3.3",
     "deepai": "^1.0.17",
     "express": "^4.17.1",
     "faker": "^5.5.3",
@@ -35,7 +37,8 @@
     "react": "^17.0.2",
     "react-dev": "0.0.1",
     "react-dom": "^17.0.2",
-    "react-test-renderer": "^17.0.2"
+    "react-test-renderer": "^17.0.2",
+    "supertest": "^6.1.3"
   },
   "repository": {
     "type": "git",
@@ -54,6 +57,8 @@
     "css-loader": "^5.2.4",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
+    "eslint": "^7.26.0",
+    "eslint-plugin-react": "^7.23.2",
     "jsdom": "16.5.3",
     "jsdom-global": "3.0.2",
     "less": "^4.1.1",

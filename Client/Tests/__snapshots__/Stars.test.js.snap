@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render if double data is passed in 1`] = `ShallowWrapper {}`;
+
+exports[`should render the stars component correctly 1`] = `
+<div
+  className="reviewAndStars"
+>
+  <div>
+    <span
+      className="overallStarsText"
+    >
+      Overall               
+    </span>
+    <span
+      className="Stars overallStars"
+    />
+  </div>
+  <div>
+    <span
+      className="performanceStarsText"
+    >
+      Performance       
+    </span>
+    <span
+      className="Stars performanceStars"
+    />
+  </div>
+  <div>
+    <span
+      className="storyStarsText"
+    >
+      Story                   
+    </span>
+    <span
+      className="Stars storyStars"
+    />
+  </div>
+</div>
+`;

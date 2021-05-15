@@ -1,7 +1,6 @@
 import React from 'react';
 
 const nav = (props) => {
-
   return (
   <nav>
     <div className={"formattingDiv"}></div>

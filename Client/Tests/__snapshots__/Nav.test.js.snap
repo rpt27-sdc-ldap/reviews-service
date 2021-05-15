@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<nav>
+  <div
+    className="formattingDiv"
+  />
+  <div
+    className="greyBar"
+  />
+  <button
+    className="Canada"
+    onClick={[Function]}
+  >
+    Audible.co.ca Reviews
+  </button>
+  <button
+    className="Audible"
+    onClick={[Function]}
+  >
+    Audible.com Reviews
+  </button>
+  <div
+    className="customerReviewsDiv"
+  >
+    Customer Reviews
+  </div>
+</nav>
+`;

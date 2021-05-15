@@ -11,7 +11,7 @@ const config = {
         '\\.(css|less)$': __dirname + '/Client/Tests/styleMock.js',
   },
   preset: "@shelf/jest-mongodb",
-  setupFilesAfterEnv: ["/Users/jametevia/rpt/reviews/Client/Tests/setupTests.js"]
+  setupFilesAfterEnv: [ __dirname + "/Client/Tests/setupTests.js"]
 };
 
 module.exports = config;

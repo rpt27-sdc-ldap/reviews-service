@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app body should match snapshot 1`] = `
+<div
+  className="reviewsShell"
+>
+  <nav>
+    <div
+      className="formattingDiv"
+    />
+    <div
+      className="greyBar"
+    />
+    <button
+      className="Canada"
+      onClick={[Function]}
+    >
+      Audible.co.ca Reviews
+    </button>
+    <button
+      className="Audible"
+      onClick={[Function]}
+    >
+      Audible.com Reviews
+    </button>
+    <div
+      className="customerReviewsDiv"
+    >
+      Customer Reviews
+    </div>
+  </nav>
+  <div
+    className="filters"
+  >
+    <div
+      className="sortByDiv"
+    >
+      <label
+        htmlFor="sortBy"
+        id="sortByLabel"
+      >
+        Sort by:
+      </label>
+      <select
+        id="sortBy"
+        name="sortBy"
+        onChange={[Function]}
+      >
+        <option
+          value="mostHelpful"
+        >
+          Most Helpful
+        </option>
+        <option
+          value="mostRecent"
+        >
+          Most Recent
+        </option>
+      </select>
+    </div>
+    <div
+      className="filterByDiv"
+    >
+      <label
+        htmlFor="filterBy"
+        id="filterByLabel"
+      >
+        Filter by:
+      </label>
+      <select
+        id="filterBy"
+        name="filterBy"
+        onChange={[Function]}
+      >
+        <option
+          value="All Stars"
+        >
+          All Stars
+        </option>
+        <option
+          value="5 star only"
+        >
+          5 star only
+        </option>
+        <option
+          value="4 star only"
+        >
+          4 star only
+        </option>
+        <option
+          value="3 star only"
+        >
+          3 star only
+        </option>
+        <option
+          value="2 star only"
+        >
+          2 star only
+        </option>
+        <option
+          value="1 star only"
+        >
+          1 star only
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="reviewBodyContainer"
+  >
+    <div
+      className="reviewBody"
+    />
+  </div>
+  <button
+    className="showMore"
+    onClick={[Function]}
+  >
+    Show More
+  </button>
+</div>
+`;

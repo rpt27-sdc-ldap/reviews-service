@@ -6,11 +6,12 @@ import ReviewBody from './reviewBody';
 import SortBy from './sortBy';
 import FilterBy from './filterBy';
 import Nav from './nav';
+//App componenet
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'hiddenReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
+    this.state = {reviews: [], carouselReviews: [], itemsToShow: 10, Audible: 'Audible', Canada: 'Canada', reviewBodyClass: 'defaultReview', readMoreDisplay: 'readMore', hideMeDisplay: 'hideHideMeButton'};
     this.reviewGetter = this.reviewGetter.bind(this);
     // this.carouselReviewsGetter = this.carouselReviewsGetter.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
@@ -27,7 +28,7 @@ class App extends React.Component {
       if (newReviews[i].reviewerId === id) {
         newReviews[i].readMoreDisplay = 'readMore';
         newReviews[i].hideMeDisplay = 'hideHideMeButton';
-        newReviews[i].reviewBodyClass = 'hiddenReview';
+        newReviews[i].reviewBodyClass = 'defaultReview';
       }
     }
     this.setState({reviews: newReviews});
@@ -193,23 +194,11 @@ class App extends React.Component {
         this.setState({reviews: data});
       },
       error: (error) => {
-        console.log('error', error);
+        this.setState({reviews: []})
       }
     })
   }
-  // carouselReviewsGetter () {
-  //   $.ajax({
-  //     url: "http://localhost:4000/reviews/carouselReviews",
-  //     data: {ids: [1, 2, 3, 4, 5, 6, 7]},
-  //     method: 'POST',
-  //     success: (data) => {
-  //       this.setState({carouselReviews: data})
-  //     },
-  //     error: (error) => {
-  //       console.log('error', error);
-  //     }c
-  //   })
-  // }
+
 
   componentDidMount() {
     this.reviewGetter();
