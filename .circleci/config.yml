@@ -12,6 +12,7 @@ jobs:
           steps:
             - run: npm install
       # - run: dockerize -wait http://127.0.0.1:4000 -timeout 10s
+      - run: sleep 5 
       - run: ps aux
       - run: npm run test
 
