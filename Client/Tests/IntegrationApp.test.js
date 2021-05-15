@@ -1,4 +1,4 @@
-const request = require("supertest")('http://localhost:4000');
+const request = require("supertest")('127.0.0.1:4000');
 require("babel-polyfill");
 const app = require("../src/Components/App.js");
 
