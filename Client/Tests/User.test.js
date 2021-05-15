@@ -26,10 +26,10 @@ it ('should render name and date if date exists', () => {
   expect(userBody.find('.nameAndDate').exists()).toBe(true);
 })
 
-it ('should match snapshot', () => {
-  const data = mockSuccessAjax(successData);
-  let review = data.slice(0, 1);
-  review = review[0];
-  const tree = renderer.create(<User review={review}/>).toJSON();
-  expect(tree).toMatchSnapshot();
-})
+// it ('should match snapshot', () => {
+//   const data = mockSuccessAjax(successData);
+//   let review = data.slice(0, 1);
+//   review = review[0];
+//   const tree = renderer.create(<User review={review}/>).toJSON();
+//   expect(tree).toMatchSnapshot();
+// })

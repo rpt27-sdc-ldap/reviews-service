@@ -7,13 +7,13 @@ import mockSuccessAjax from './mockSuccessAjax';
 import successData  from './successData.json';
 import renderer from 'react-test-renderer'
 
-it ('should match snapShot', () => {
-  let review = mockSuccessAjax(successData);
-  review = review.slice(0, 1);
-  const tree = renderer.create(<PhoneUserInfo review={review} />).toJSON();
+// it ('should match snapShot', () => {
+//   let review = mockSuccessAjax(successData);
+//   review = review.slice(0, 1);
+//   const tree = renderer.create(<PhoneUserInfo review={review} />).toJSON();
 
-  expect(tree).toMatchSnapshot();
-});
+//   expect(tree).toMatchSnapshot();
+// });
 
 it ('should render phoneUserinfo', () => {
   let review = mockSuccessAjax(successData);
