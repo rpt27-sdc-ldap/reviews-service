@@ -23,6 +23,7 @@ const reviewGetter = (req, res, id) => {
             let review = reviewArray.join('<br>');
             data[i].review = review;
           }
+
           res.send(data);
         })
         .catch((error) => {

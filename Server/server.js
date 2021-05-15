@@ -19,6 +19,7 @@ const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter
 //______This route fires on page load since this is a route integral to the initial structure of the page
 app.get('/reviews/:bookId', (req, res) => {
   const id = req.params.bookId;
+  res.set({'Access-Control-Allow-Origin': '*'})
   reviewGetter(req, res, id);
 });
 
@@ -26,9 +27,8 @@ app.get('/reviews/:bookId', (req, res) => {
 //_____It takse in an object formatted with book ids as the key {ids: [1, 2, 3, etc.]}
 //_____This will return an array of objects with: bookId, reviewTitle, reviewerName, and reviewData.
 app.post('/reviews/carouselReviews', (req, res) => {
-
   let idArray = req.body.ids;
-
+  res.set({'Access-Control-Allow-Origin': '*'})
   arrayOfIdsReviewGetter(req, res, idArray)
 })
 
