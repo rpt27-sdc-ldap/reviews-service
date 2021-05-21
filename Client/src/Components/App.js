@@ -168,7 +168,7 @@ class App extends React.Component {
 
     const query = new URLSearchParams(location.search);
     const id = query.get('bookId');
-    fetch(`http://localhost:4400/reviews/${id}`)
+    fetch(`http://localhost:4000/reviews/${id}`)
       .then((response) => response.json())
       .then(data => {
         let nameObject = {};
