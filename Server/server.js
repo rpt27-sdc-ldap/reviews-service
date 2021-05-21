@@ -20,7 +20,7 @@ const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter
 app.get('/reviews/:bookId', (req, res) => {
   const id = req.params.bookId;
 
-  res.set({'Access-Control-Allow-Origin': 'http://localhost:4000'})
+  res.set({'Access-Control-Allow-Origin': '*'})
   reviewGetter(req, res, id);
 });
 
