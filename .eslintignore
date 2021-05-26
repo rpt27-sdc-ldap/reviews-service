@@ -9,3 +9,17 @@
 
 #seed DB
 /Server/databaseHelperFunctions/seedDB.js
+
+dist/reviews.js
+
+
+/S3_Access
+
+/Server
+
+/config.js
+
+/jest.config.js
+
+/Client
+
