@@ -166,11 +166,9 @@ class App extends React.Component {
 
   reviewGetter() {
 
-    const query = new URLSearchParams(location.search);
-    console.log(query);
+    const query = new URLSearchParams(window.location.search);
     const id = query.get('bookId');
-    console.log('proxy');
-    fetch(`http://52.53.198.130:4001/reviews/${id}`)
+    fetch(`http://54.219.131.175:4001/reviews/${id}`)
       .then((response) => response.json())
       .then(data => {
         let nameObject = {};
