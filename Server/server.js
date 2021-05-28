@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 4000;
+const port = 4001;
 let pathName = path.join(__dirname, '../dist');
 const db = require('../Database/database.js');
 const reviewCollection = db.Review;
@@ -20,7 +20,7 @@ const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter
 app.get('/reviews/:bookId', (req, res) => {
   const id = req.params.bookId;
   console.log('header', req.headers);
-  res.set({'Access-Control-Allow-Origin': 'http://52.53.198.130:4001'})
+  res.set({'Access-Control-Allow-Origin': 'http://52.53.198.130:4000'})
   reviewGetter(req, res, id);
 });
 
