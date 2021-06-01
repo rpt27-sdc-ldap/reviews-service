@@ -1,5 +1,6 @@
 var AWS = require('aws-sdk');
-var config = require('../config.js')
+var config = require('../config.js');
+
 AWS.config.update(
   {
     accessKeyId: config.key,

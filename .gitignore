@@ -11,3 +11,5 @@ compiled/
 config.js
 
 dist/
+
+*.sh

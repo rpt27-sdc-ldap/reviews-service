@@ -8,7 +8,8 @@
     "start": "nodemon Server/server.js",
     "build": "webpack --config webpack.config.js",
     "webpack": "webpack --watch",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "deploy": "aws s3 sync dist/ s3://fec.audible.productpage"
   },
   "keywords": [],
   "author": "",
