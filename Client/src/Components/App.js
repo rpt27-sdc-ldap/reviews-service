@@ -166,10 +166,7 @@ class App extends React.Component {
 
   reviewGetter() {
     let pathname = document.location.pathname;
-    const query = new URLSearchParams(location.search);
-    const bookId = query.get('bookId');
-    console.log(document.location.pathname);
-    fetch(`http://ec2-54-153-95-228.us-west-1.compute.amazonaws.com:4000/books/${bookId}/reviews`)
+    fetch(`http://ec2-54-153-95-228.us-west-1.compute.amazonaws.com:4000/${pathname}`)
       .then((response) => response.json())
       .then(data => {
         let nameObject = {};
