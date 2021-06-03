@@ -19,7 +19,7 @@ const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter
 //______This route fires on page load since this is a route integral to the initial structure of the page
 app.get('/books/:id/reviews', (req, res) => {
   const id = req.params.id;
-  res.set({'Access-Control-Allow-Origin': 'http://ec2-54-153-95-228.us-west-1.compute.amazonaws.com:4000'})
+  res.set({'Access-Control-Allow-Origin': 'http://ec2-54-153-95-228.us-west-1.compute.amazonaws.com:80'})
   reviewGetter(req, res, id);
 });
 
