@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 4001;
-app.use('/books/:bookId', express.static(path.join(__dirname, '..', 'dist')));
+app.use('/books/:bookId/reviews', express.static(path.join(__dirname, '..', 'dist')));
 const db = require('../Database/database.js');
 const reviewCollection = db.Review;
 const Promise = require('bluebird');
