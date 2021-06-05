@@ -2,10 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 4001;
-let pathName = path.join(__dirname, '../dist');
+app.use('/books/:id', express.static(path.join(__dirname, '..', 'dist')));
 const db = require('../Database/database.js');
 const reviewCollection = db.Review;
-app.use(express.static(pathName));
 const Promise = require('bluebird');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,8 +18,8 @@ const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter
 //______This route fires on page load since this is a route integral to the initial structure of the page
 app.get('/books/:id/reviews', (req, res) => {
   const id = req.params.id;
-  console.log('header', req.headers);
-  res.set({'Access-Control-Allow-Origin': 'http://54.153.95.228:4000'})
+  console.log(id);
+  res.set({'Access-Control-Allow-Origin': '*'})
   reviewGetter(req, res, id);
 });
 
