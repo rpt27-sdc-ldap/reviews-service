@@ -48,7 +48,7 @@
 
 
 * send <GET> request to http://yourEC2Instance:4001/reviews/carouselReviews <arrayOfBookIds> returns array of infoObjects for modals / carousels
-* returns
+* returns one review object per id
 * {reviewerName: String,
 reviewTitle: string
 date: date,
