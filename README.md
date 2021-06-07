@@ -18,17 +18,15 @@ Audible Reviews is a component in a mock Audible page. Audible Reviews displays 
 
 * RenderDom is in Client/index.js. App components are in Client/src/Components
 
-## Usage
-
 * The Server with endpoints is in Server/server.js
+
+
+## Usage
 
 * The two endpoints available are books/:id/reviews and /reviews/carouselReviews. The working endpoint for rendering reviews is books/:id/reviews. The currently non implemented path for carousel reviews is /reviews/carouselReviews.
 
-//______This route returns all reviews on page load.
-* ______It returns {reviewerName: String,reviewerId: Number,review: String,urlString: String,bookName: String,bookId: Number,date: Date,overallStars: Number,performanceStars: Number,storyStars: Number,title: String,foundHelpful: Number,source: String, location: String}
-//______This route fires on page load since this is a route integral to the initial structure of the page
-
-http://localhost:4000/reviews (bookId) #returns
+send <GET> request to http://yourEC2Instance:4001/books/:id/reviews
+* returns
   {reviewerName: String,
   reviewerId: Number,
   review: String,
@@ -44,11 +42,9 @@ http://localhost:4000/reviews (bookId) #returns
   source: String,
   location: String}
 
-//_____This route returns reviews for carousel data such as when one wants review data for recommended books and related books.
-//_____It takse in an object formatted with book ids as the key {ids: [1, 2, 3, etc.]}
-//_____This will return an array of objects with: bookId, reviewTitle, reviewerName, and reviewData.
 
-http://localhost:4000/reviews/carouselReviews (arrayOfBookIds) #returns array of infoObjects
+send <GET> request to /reviews/carouselReviews <arrayOfBookIds> returns array of infoObjects for modals / carousels
+* returns
 {reviewerName: String,
 reviewTitle: string
 date: date,
