@@ -2,9 +2,9 @@
 
 <a href="url"><img src="screenshotsAndGifs/reviewsWithHeader.png" align="left" height="300px" width="150px"></a>
 
-<a href="url"><img src="screenshotsAndGifs/desktopReviewsGif.gif" align="right" height="200px" width="250px"></a>
+<a href="url"><img src="screenshotsAndGifs/desktopReviews.png" align="left" height="200px" width="250px"></a>
 
-<a href="url"><img src="screenshotsAndGifs/desktopReviews.png" align="left" height="250px" width="300px"></a>
+<a href="url"><img src="screenshotsAndGifs/desktopReviewsGif.gif" align="left" height="250px" width="300px"></a>
 
 <br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
