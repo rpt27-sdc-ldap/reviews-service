@@ -1,5 +1,11 @@
 # Audible Reviews
 
+<a href="url"><img src="screenshotsAndGifs/reviewsWithHeader.png" align="left" height="400px" width="200px"></a>
+
+<a href="url"><img src="screenshotsAndGifs/desktopReviewsGif.gif" align="right" height="350px" width="400px"></a>
+
+<a href="url"><img src="screenshotsAndGifs/desktopReviews.png" align="left" height="300px" width="350px"></a>
+
 Audible Reviews is a component in a mock Audible page. Audible Reviews displays the reviews for a given book.
 
 Database Folder includes 2 database helpers: seedDB seeds the database and seedDBHelperFunctions helps with seeding the database. MongoDB database setup is in Database/database.js.
