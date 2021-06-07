@@ -31,7 +31,7 @@
 
 * send <GET> request to http://yourEC2Instance:4001/books/:id/reviews
 * returns multiple review objects per id
-  {reviewerName: String,
+* {reviewerName: String,
   reviewerId: Number,
   review: String,
   urlString: String,
@@ -47,9 +47,9 @@
   location: String}
 
 
-* send <GET> request to /reviews/carouselReviews <arrayOfBookIds> returns array of infoObjects for modals / carousels
+* send <GET> request to http://yourEC2Instance:4001/reviews/carouselReviews <arrayOfBookIds> returns array of infoObjects for modals / carousels
 * returns
-{reviewerName: String,
+* {reviewerName: String,
 reviewTitle: string
 date: date,
 overalStars: Number}
