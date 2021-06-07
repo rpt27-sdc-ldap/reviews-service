@@ -58,7 +58,8 @@ overalStars: Number}
 
 ```bash
 
-git clone 'https://github.com/huang-pei-mei/reviews-service.git'
+fork 'https://github.com/huang-pei-mei/reviews-service'
+git clone /path/to/reviews.git
 cd reviews-service
 npm install
 npm run webpack
