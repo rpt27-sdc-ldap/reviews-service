@@ -21,7 +21,6 @@ app.use('/books/:id/reviews', AmpOptimizerMiddleware.create());
 //______This route fires on page load since this is a route integral to the initial structure of the page
 app.get('/books/:id/reviews', (req, res) => {
   const id = req.params.id;
-  console.log(id);
   res.set({"Cache-Control": "public", 'Access-Control-Allow-Origin': '*'})
   reviewGetter(req, res, id);
 });

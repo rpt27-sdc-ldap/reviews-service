@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --collect-coverage",
     "start": "nodemon Server/server.js",
-    "build": "webpack --config webpack.config.js",
+    "react-prod": "webpack --config webpack.config.js",
     "webpack": "webpack --watch",
     "lint": "eslint ./",
     "deploy": "aws s3 sync dist/ s3://fec.audible.productpage"
