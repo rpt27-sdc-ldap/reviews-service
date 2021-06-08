@@ -2,10 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "../../style/main.less";
 import $ from 'jquery';
-import ReviewBody from './reviewBody';
-import SortBy from './sortBy';
+// import ReviewBody from './reviewBody';
+// import SortBy from './sortBy';
 import FilterBy from './filterBy';
 import Nav from './nav';
+import React, { lazy } from 'react';
+
+const ReviewBody = lazy(() => import('./reviewBody'));
+const SortBy = laxy(() => import ('./sortBy'));
 //App componenet
 
 class App extends React.Component {

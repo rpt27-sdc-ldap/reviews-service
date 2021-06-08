@@ -62,7 +62,7 @@ fork 'https://github.com/huang-pei-mei/reviews-service'
 git clone /path/to/reviews.git
 cd reviews-service
 npm install
-npm run webpack
+npm run react-prod
 npm run start
 
 ```
