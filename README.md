@@ -1,6 +1,6 @@
 # Audible Reviews
 
-* Is hosted on AWS EC2 instances and S3 buckets
+* Is hosted on an AWS EC2 instance and uses S3 buckets
 
 * React
 
@@ -10,7 +10,7 @@
 
 * MongoDB
 
-* I was responsible for this service. It works on a page with 5 other services to form a mock Audible product page that our team of four built. With our respository located at https://github.com/huang-pei-mei
+* I was responsible for this service. It works on a page with 5 other services to form a mock Audible product page that our team of four built. Our respository located at https://github.com/huang-pei-mei and my proxy server is located at https://github.com/huang-pei-mei/jm-proxy
 
 <a href="url"><img src="screenshotsAndGifs/reviewsWithHeader.png" align="left" height="300px" width="150px"></a>
 
@@ -24,7 +24,6 @@
 
 ## Usage
 
-* Audible Reviews is a component in a mock Audible page. Audible Reviews displays the reviews for a given book.
 
 * Database Folder includes 2 database helpers: seedDB seeds the database and seedDBHelperFunctions helps with seeding the database.
 
