@@ -10,7 +10,7 @@
 
 * MongoDB
 
-* I was responsible for this service. It works on a page with 5 other services to form a mock Audible product page. With our respository located at https://github.com/huang-pei-mei
+* I was responsible for this service. It works on a page with 5 other services to form a mock Audible product page that our team of four built. With our respository located at https://github.com/huang-pei-mei
 
 <a href="url"><img src="screenshotsAndGifs/reviewsWithHeader.png" align="left" height="300px" width="150px"></a>
 
