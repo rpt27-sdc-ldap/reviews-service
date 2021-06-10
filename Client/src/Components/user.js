@@ -9,7 +9,7 @@ const User = (props) => {
   const dateString = dateArray[1] + '-' + dateArray[2] + '-' + dateArray[0];
   return (
     <div className="userInfo">
-      <img src={props.review.urlString} alt="Profile Picture" className="profilePicture user" />
+      <img src={props.review.urlString} alt="Profile Picture" className="profilePicture user" height="40px" width="40px"/>
       <div className="nameAndDate">
         <div className="userName">{props.review.reviewerName}</div>
         <div className="date">{dateString}</div>

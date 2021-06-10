@@ -11,6 +11,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 const reviewGetter = require('./serverHelpers').reviewGetter;
 const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter;
+const AmpOptimizerMiddleware = require('@ampproject/toolbox-optimizer-express');
+
+app.use('/books/:id/reviews', AmpOptimizerMiddleware.create());
 
 
 //______This route returns all reviews on page load.
@@ -18,8 +21,7 @@ const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter
 //______This route fires on page load since this is a route integral to the initial structure of the page
 app.get('/books/:id/reviews', (req, res) => {
   const id = req.params.id;
-  console.log(id);
-  res.set({'Access-Control-Allow-Origin': '*'})
+  res.set({"Cache-Control": "public", 'Access-Control-Allow-Origin': '*'})
   reviewGetter(req, res, id);
 });
 

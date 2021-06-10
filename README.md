@@ -1,5 +1,17 @@
 # Audible Reviews
 
+* Is hosted on an AWS EC2 instance and uses S3 buckets
+
+* React
+
+* Node.js
+
+* Express
+
+* MongoDB
+
+* I was responsible for this service. It works on a page with 5 other services to form a mock Audible product page that our team of four built. Our respository located at https://github.com/huang-pei-mei and my proxy server is located at https://github.com/huang-pei-mei/jm-proxy
+
 <a href="url"><img src="screenshotsAndGifs/reviewsWithHeader.png" align="left" height="300px" width="150px"></a>
 
 <a href="url"><img src="screenshotsAndGifs/desktopReviews.png" align="left" height="200px" width="250px"></a>
@@ -8,9 +20,14 @@
 
 <br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-* Audible Reviews is a component in a mock Audible page. Audible Reviews displays the reviews for a given book.
+
+
+## Usage
+
 
 * Database Folder includes 2 database helpers: seedDB seeds the database and seedDBHelperFunctions helps with seeding the database.
+
+* Run node Database/databaseHelpers/seedDB to seed the database
 
 * MongoDB database setup is in Database/database.js.
 
@@ -24,10 +41,7 @@
 
 * The Server with endpoints is in Server/server.js
 
-
-## Usage
-
-* The two endpoints available are books/:id/reviews and /reviews/carouselReviews. The working endpoint for rendering reviews is books/:id/reviews. The currently non implemented path for carousel reviews is /reviews/carouselReviews.
+* The two endpoints available are books/:id/reviews and /reviews/carouselReviews
 
 * send <GET> request to http://yourEC2Instance:4001/books/:id/reviews
 * returns multiple review objects per id
@@ -62,7 +76,7 @@ fork 'https://github.com/huang-pei-mei/reviews-service'
 git clone /path/to/reviews.git
 cd reviews-service
 npm install
-npm run webpack
+npm run react-prod
 npm run start
 
 ```
