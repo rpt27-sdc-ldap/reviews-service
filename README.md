@@ -10,6 +10,10 @@
 
 * MongoDB
 
+* axe DevTools for accessibility (added custom focus states)
+
+* WCAG - Contrast checker
+
 * I was responsible for this service. It works on a page with 5 other services to form a mock Audible product page that our team of four built. Our respository located at https://github.com/huang-pei-mei and my proxy server is located at https://github.com/huang-pei-mei/jm-proxy
 
 <a href="url"><img src="screenshotsAndGifs/reviewsWithHeader.png" align="left" height="300px" width="150px"></a>

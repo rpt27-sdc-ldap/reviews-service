@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Stars from "./stars.js";
 import User from "./user.js";
 import PhoneUserInfo from "./phoneUserInfo";
-//code review pull request
+//code review pull request **
 
 function reviewBody(props) {
   let reviews = [];
@@ -26,9 +26,9 @@ function reviewBody(props) {
         <h4 className="reviewTitle">
           {review.reviewTitle}
         </h4>
-        <span className={review.reviewBodyClass || props.reviewBodyClass}>
+        <div className={review.reviewBodyClass || props.reviewBodyClass}>
           {review.review}
-        </span>
+        </div>
         <button className={review.readMoreDisplay || props.readMoreDisplay} onClick={() => {props.readMore(review.reviewerId)}}>Read More &#9662;</button>
         <button className={review.hideMeDisplay || props.hideMeDisplay} onClick={() => {props.hideMe(review.reviewerId)}}>Hide Me &#9652;</button>
         <div className="foundHelpful">
