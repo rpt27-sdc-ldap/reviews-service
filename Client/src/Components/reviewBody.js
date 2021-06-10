@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Stars from "./stars.js";
 import User from "./user.js";
 import PhoneUserInfo from "./phoneUserInfo";
+//code review pull request
 
 function reviewBody(props) {
   let reviews = [];
@@ -13,6 +14,7 @@ function reviewBody(props) {
     }
   }
   reviews = reviews.slice(0, props.itemsToShow);
+
   const reviewItems = reviews.map((review, i) =>
   <div key={i} className="columnsContainers">
     <div className="column left">
