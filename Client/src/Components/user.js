@@ -12,7 +12,7 @@ const User = (props) => {
       <img src={props.review.urlString} alt="Profile Picture" className="profilePicture user" height="40px" width="40px"/>
       <div className="nameAndDate">
         <div className="userName">{props.review.reviewerName}</div>
-        <time className="date">{dateString}</time>
+        <div className="date">{dateString}</div>
       </div>
     </div>
   )
