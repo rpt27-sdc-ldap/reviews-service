@@ -22,8 +22,7 @@
 
 <a href="url"><img src="screenshotsAndGifs/desktopReviewsGif.gif" align="left" height="250px" width="300px"></a>
 
-<br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
+<br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 
 ## Usage
