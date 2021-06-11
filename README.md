@@ -32,13 +32,10 @@
 
 <br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-<span>Phone View &#9660;</span>
+<span>Phone View &#9660; 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; Accessibility Focus State &#9660;</span>
 
 <a href="url"><img src="screenshotsAndGifs/mediaReviews.gif" align="left" height="300px" width="350px"></a>
 
-<span>Accessbility Focus State </span>
-<br />
-<br />
 
 <a href="url"><img src="screenshotsAndGifs/accessibility.gif" align="left" height="300px" width="350px"></a>
 
