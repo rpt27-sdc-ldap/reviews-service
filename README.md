@@ -34,7 +34,7 @@
 
 <span>Phone View &#9660;</span>
 
-<a href="url"><img src="screenshotsAndGifs/mediaReviews.gif" align="left" height="300px" width="150px"></a>
+<a href="url"><img src="screenshotsAndGifs/mediaReviews.gif" align="left" height="300px" width="300px"></a>
 
 <br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
