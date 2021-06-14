@@ -11,7 +11,7 @@ const phoneUserInfo = (props) => {
     <div className="phoneUserInfo">
       <div className="By">By</div>
       <div className="phoneUserName">{props.review.reviewerName}</div>
-      <div className="phoneOnDate">on {dateString}</div>
+      <time className="phoneOnDate">on {dateString}</time>
     </div>
   )
 };

@@ -14,7 +14,15 @@
 
 * WCAG - Contrast checker
 
+* mobile and desktop views are styled
+
 * I was responsible for this service. It works on a page with 5 other services to form a mock Audible product page that our team of four built. Our respository located at https://github.com/huang-pei-mei and my proxy server is located at https://github.com/huang-pei-mei/jm-proxy
+
+#### Reviews Screenshots and gif
+<br />
+<span>Phone View &#9660;</span>
+<br />
+<br />
 
 <a href="url"><img src="screenshotsAndGifs/reviewsWithHeader.png" align="left" height="300px" width="150px"></a>
 
@@ -22,9 +30,17 @@
 
 <a href="url"><img src="screenshotsAndGifs/desktopReviewsGif.gif" align="left" height="250px" width="300px"></a>
 
-<br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+<span>Phone View &#9660; 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accessibility Focus State &#9660;</span>
+
+<a href="url"><img src="screenshotsAndGifs/mediaReviews.gif" align="left" height="300px" width="350px"></a>
 
 
+<a href="url"><img src="screenshotsAndGifs/accessibility.gif" align="left" height="300px" width="350px"></a>
+
+
+<br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 ## Usage
 

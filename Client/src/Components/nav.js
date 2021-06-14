@@ -7,9 +7,9 @@ const nav = (props) => {
     <div className={"greyBar"}></div>
     <button className={props.state.Canada} onClick={() => {props.setCanadaClass()}}>Audible.co.ca Reviews</button>
     <button className={props.state.Audible} onClick={() => {props.setAudibleClass()}}>Audible.com Reviews</button>
-    <div className="customerReviewsDiv">
+    <p className="customerReviewsDiv">
       Customer Reviews
-    </div>
+    </p>
   </nav>
   )
 }
