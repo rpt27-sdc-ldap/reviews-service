@@ -167,7 +167,7 @@ class App extends React.Component {
 
   reviewGetter() {
     let pathname = document.location.pathname;
-    fetch(`http://ec2-54-153-95-228.us-west-1.compute.amazonaws.com:80${pathname}reviews`)
+    fetch(`http://localhost:4001${pathname}reviews`)
       .then((response) => response.json())
       .then(data => {
         let nameObject = {};

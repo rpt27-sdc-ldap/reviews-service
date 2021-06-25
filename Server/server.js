@@ -25,6 +25,21 @@ app.get('/books/:id/reviews', (req, res) => {
   reviewGetter(req, res, id);
 });
 
+app.delete('/books/:id/reviews/:review', (req, res) => {
+  const id = req.params.id;
+  const review = req.params.review;
+});
+
+app.post('/books/:id/reviews/:review', (req, res) => {
+  const id = req.params.id;
+  const review = req.params.review;
+});
+
+app.put('/books/:id/reviews/:review', (req, res) => {
+  const id = req.params.id;
+  const review = req.params.review;
+});
+
 //_____This route returns reviews for carousel data such as when one wants review data for recommended books and related books.
 //_____It takse in an object formatted with book ids as the key {ids: [1, 2, 3, etc.]}
 //_____This will return an array of objects with: bookId, reviewTitle, reviewerName, and reviewData.
