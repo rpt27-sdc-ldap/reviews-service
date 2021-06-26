@@ -6,11 +6,18 @@ app.use('/books/:id', express.static(path.join(__dirname, '..', 'dist')));
 const db = require('../Database/database.js');
 const reviewCollection = db.Review;
 const Promise = require('bluebird');
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-const reviewGetter = require('./serverHelpers').reviewGetter;
-const arrayOfIdsReviewGetter = require('./serverHelpers').arrayOfIdsReviewGetter;
+//const bodyParser = require('body-parser');
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+const {
+  reviewGetter,
+  arrayOfIdsReviewGetter,
+  createReview,
+  readReview,
+  updateReview,
+  deleteReview,
+  dbHandler
+} = require('./serverHelpers');
 const AmpOptimizerMiddleware = require('@ampproject/toolbox-optimizer-express');
 
 app.use('/books/:id/reviews', AmpOptimizerMiddleware.create());
@@ -25,19 +32,30 @@ app.get('/books/:id/reviews', (req, res) => {
   reviewGetter(req, res, id);
 });
 
-app.delete('/books/:id/reviews/:review', (req, res) => {
-  const id = req.params.id;
-  const review = req.params.review;
+//CRUD operations
+
+//Read
+app.get('/books/:id/reviews/author/:author', (req, res) => {
+  const {id, author} = req.params;
+  dbHandler(req, res, readReview(id, author));
 });
 
-app.post('/books/:id/reviews/:review', (req, res) => {
-  const id = req.params.id;
-  const review = req.params.review;
+//Delete
+app.delete('/books/:id/reviews/author/:author', (req, res) => {
+  const {id, author} = req.params;
+  dbHandler(req, res, deleteReview(id, author));
 });
 
-app.put('/books/:id/reviews/:review', (req, res) => {
-  const id = req.params.id;
-  const review = req.params.review;
+//Create
+app.post('/books/:id/reviews/author/:author', (req, res) => {
+  const {id, author} = req.params;
+  dbHandler(req, res, createReview(id, author, req.body));
+});
+
+//update
+app.put('/books/:id/reviews/author/:author', (req, res) => {
+  const {id, author} = req.params;
+  dbHandler(req, res, updateReview(id, author, req.body));
 });
 
 //_____This route returns reviews for carousel data such as when one wants review data for recommended books and related books.
