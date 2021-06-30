@@ -81,6 +81,10 @@ const arrayOfIdsReviewGetter = (req, res, idArray) => {
 const createReview = (bookId, reviewerId, review) => {
   review.bookId = bookId;
   review.reviewerId = reviewerId;
+  console.log(review);
+  review.date = review.date || Date.now();
+  review.source = review.source || "Audible";
+  review.location = review.source || "United States";
   return reviewCollection.create(review);
 };
 
@@ -105,7 +109,11 @@ const dbHandler = (req, res, query) => {
     }
   })
   .catch(err => {
-    res.sendStatus(500);
+    if (err.code === 11000) {
+      res.status(403).json({message: "Duplicate entry not permited"});
+    } else {
+      res.sendStatus(500);
+    }
     console.error(err);
   });
 }

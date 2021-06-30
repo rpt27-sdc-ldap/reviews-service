@@ -53,7 +53,7 @@ app.post('/books/:id/reviews/author/:author', (req, res) => {
 });
 
 //update
-app.put('/books/:id/reviews/author/:author', (req, res) => {
+app.patch('/books/:id/reviews/author/:author', (req, res) => {
   const {id, author} = req.params;
   dbHandler(req, res, updateReview(id, author, req.body));
 });
