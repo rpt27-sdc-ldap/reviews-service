@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fec', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('We\'re Connected!')
-
+  console.log('We\'re Connected!');
 });
+
 const reviewSchema = new mongoose.Schema({
   reviewerName: String,
   reviewerId: Number,
@@ -24,4 +25,6 @@ const reviewSchema = new mongoose.Schema({
   location: String
 });
 
-module.exports= mongoose.model('Review', reviewSchema);
+reviewSchema.index({bookId: 1, reviewerId: 1}, {unique: true});
+
+module.exports = mongoose.model('Review', reviewSchema);

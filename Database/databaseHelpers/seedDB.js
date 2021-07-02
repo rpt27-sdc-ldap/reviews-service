@@ -21,6 +21,9 @@ const lorem = new LoremIpsum({
 var Promise = require("bluebird");
 
 function seedDatabase() {
+  let inserted = 0;
+  let attempted = 0;
+  let total = 0;
   return new Promise(function (resolve, reject) {
     imageGetterFunction(resolve);
   })
@@ -29,6 +32,7 @@ function seedDatabase() {
     const dbObject = {};
     for (let i = 0; i < 100; i++) {
       const reviewCount = Math.floor(50 * Math.random());
+      total += reviewCount;
       for (j = 0; j < reviewCount; j++) {
         const reviewObject = {};
         reviewObject.bookId = i;
@@ -104,7 +108,16 @@ function seedDatabase() {
         reviewObject.reviewTitle = lorem.generateWords(numberOfWords);
         console.log('reviewObject', reviewObject);
         db.create(reviewObject, function (err, small) {
-          if (err) return handleError(err);
+          attempted++;
+          if (err) {
+            console.error(err);
+          } else {
+            inserted++;
+          }
+          if (attempted >= total) {
+            console.log(`Database Seeded: attempted ${attempted} / ${total} - ${inserted} inserted`);
+            process.exit();
+          }
         })
       }
     }

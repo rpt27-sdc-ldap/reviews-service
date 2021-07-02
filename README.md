@@ -88,6 +88,19 @@ reviewTitle: string
 date: date,
 overalStars: Number}
 
+* Crud API will let you create, read, update, or delete individual reviews based on book-id and reviewer-id:
+
+  ```http://yourEC2Instance:4001/books/:id/reviews/author/:authorid```
+
+  Routes:
+   - `GET` - Reads one individual review based on author and book id
+   - `POST` - Creates a new review with the specified author and bookID (takes the above review-structure JSON)
+   - `PATCH` - Updates a pre-existing review with new data
+   - `DELETE` - Deletes the corresponding review.
+
+
+
+
 ## Installation
 
 ```bash
