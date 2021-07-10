@@ -18,6 +18,13 @@ const lorem = new LoremIpsum({
   }
 });
 
+function timeToString(seconds = 0) {
+  const hours = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds - hours * 3600) / 60);
+  const secs = Math.floor(seconds- hours * 3600 - mins * 60);
+  return "" + (hours ? hours + 'h ': '') + (mins ? mins + 'm ' : '') + secs + 's';
+}
+
 async function seedDB() {
   let total = 0;
   const start = Date.now();
@@ -31,8 +38,9 @@ async function seedDB() {
     let reviews = [];
     let lastTime = Date.now();
     let inserted = 0;
+    let maxReviewCount = 10;
     for (let i = 1; i <= itemCount; i++) {
-      const reviewCount = Math.floor(10 * Math.random());
+      const reviewCount = Math.floor(maxReviewCount * Math.random());
       total += reviewCount;
       for (j = 0; j < reviewCount; j++) {
         const reviewObject = {};
@@ -101,30 +109,31 @@ async function seedDB() {
         //db-independant bulk-insert
         let insertionLength = 2000;
         if (reviews.length >= insertionLength) {
+          const currentIndex = i;
           function addHandler(added) {
             inserted += added;
-            console.clear();
             const time = (Date.now() - lastTime);
+            console.clear();
             console.log('inserted', added, 'in', time / 1000, 's');
-            inserted += added;
             lastTime = Date.now();
             const duration = (lastTime - start) / 1000;
-            const estimatedCount = itemCount * 5;
-            console.log(inserted, '/ ~', estimatedCount, duration, 's elapsed', ((inserted / estimatedCount) * 100).toFixed(2), "% complete" )
+            const estimatedCount = itemCount * maxReviewCount / 2;
+            console.log('id:', currentIndex, '/', itemCount, timeToString(duration), ' elapsed', ((currentIndex / itemCount) * 100).toFixed(2), '% complete')
             console.log(inserted / duration, 'documents / s')
-            const rps = inserted / duration;
-            console.log('ETA: ', (estimatedCount - inserted) / rps, 's, or ', (estimatedCount - inserted) / rps / 60, 'minutes')
-            reviews = [];
+            const rps = currentIndex / duration;
+            console.log('ETA: ', timeToString((itemCount - currentIndex) / rps));
             currentConnections--;
           };
           currentConnections++;
+          const data = reviews;
+          reviews = [];
           if (currentConnections < maxConnections) {
-            db.bulkInsert(reviews).then(addHandler).catch(console.error);
+            db.bulkInsert(data).then(addHandler).catch(console.error);
           } else {
-            await db.bulkInsert(reviews).then(addHandler);
+            await db.bulkInsert(data).then(addHandler);
           }
 
-          }
+        }
 
 
         if (i === itemCount) {
@@ -132,6 +141,8 @@ async function seedDB() {
         }
       }
     }
+    const duration = (Date.now() - start) / 1000;
+    console.log('inserted', inserted, 'records in - ', timeToString(duration));
   });
 }
 

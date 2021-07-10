@@ -42,13 +42,28 @@ db.getInfo = async () => {
   });
 }
 
-db.index = () => {
-
+function createIndex (indices) {
+  return {
+    "index": {
+       "fields": indices
+    },
+    "name": "foo-json-index",
+    "type": "json"
+  };
 }
+
+db.index = async () => {
+  return axios.post(couchURL + '/_index', createIndex(['bookId'])).then(res => {
+    return axios.post(couchURL + '/_index', createIndex(['bookId', 'reviewerId']));
+  }).catch(res => {
+    console.error(res?.data || res?.response.data);
+  })
+};
 
 db.init = async () => {
   axios.put(couchURL).then(async res => {
     console.log("Database not found - Created new database");
+    return await db.index();
   }).catch(async (err) => {
   if (err.response?.status === 412) {
     console.log('Connected to CouchDB @ localhost:5984');
