@@ -3,11 +3,11 @@ const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 const randomDate = require('./seedDBHelperFunctions').randomDate;
 const imageGetterFunction  = require('../../S3_Access/imagesObject.js').imageGetter;
 const randomImage = require('./seedDBHelperFunctions').randomImage;
-const db = require('../database.js');
-var csvWriter = require('csv-write-stream')
-const { createWriteStream, stat, writeFile } = require('fs');
+const db = require('../couchdb.js');
+const dbChoice = 'couch' //or postgres
 const path = require('path');
 const lorem = new LoremIpsum({
+
   sentencesPerParagraph: {
     max: 4,
     min: 2
@@ -18,50 +18,19 @@ const lorem = new LoremIpsum({
   }
 });
 
-function seedDB() {
+async function seedDB() {
   let total = 0;
-  let lastSize = -1;
   const start = Date.now();
-  const csvPath = path.resolve(__dirname, '../../mega.csv');
-  writeFile(csvPath, '', () => {});
+  await db.init();
+  let currentConnections = 0;
+  const maxConnections = dbChoice === 'couch' ? 10 : 1;
   imageGetterFunction.then(async data => {
-    const stream = csvWriter({seperator: '\t'});
-
-    const writeStream = createWriteStream(csvPath, {flags: 'w'});
-
-    stream.pipe(writeStream).on('finish', () => {
-      const end = Date.now();
-      console.log(total, 'reviews written in', (end - start) / 1000 >> 0, 's');
-      process.exit();
-    });
-
-    function watchFile() {
-      stat(csvPath, (err, stats) => {
-        let kb = stats.size / 1000;
-        let mb = (kb / 10 >> 0) / 100;
-        let gb = (mb / 10 >> 0) / 100;
-        console.clear();
-        if (mb < 1000) {
-          console.log(mb, 'MB');
-        }
-        if (gb >= 1) {
-          console.log(gb, 'GB');
-        }
-        console.log((Date.now() - start) / 1000 >> 0, 's elapsed')
-        if (lastSize === stats.size) {
-          stream.end();
-        } else {
-          lastSize = stats.size;
-        }
-        setTimeout(watchFile, 1000);
-      });
-    }
-
-    watchFile();
-
     imageObj = data;
     const dbObject = {};
     let itemCount = 10000000;
+    let reviews = [];
+    let lastTime = Date.now();
+    let inserted = 0;
     for (let i = 1; i <= itemCount; i++) {
       const reviewCount = Math.floor(10 * Math.random());
       total += reviewCount;
@@ -127,10 +96,37 @@ function seedDB() {
         }
         let numberOfWords = Math.floor(Math.random() * 6);
         reviewObject.reviewTitle = lorem.generateWords(numberOfWords);
-        if (!stream.write(reviewObject)) {
-          lastChanged = Date.now();
-          await new Promise (resolve => stream.once('drain', resolve));
-        }
+        reviews.push(reviewObject);
+
+        //db-independant bulk-insert
+        let insertionLength = 2000;
+        if (reviews.length >= insertionLength) {
+          function addHandler(added) {
+            inserted += added;
+            console.clear();
+            const time = (Date.now() - lastTime);
+            console.log('inserted', added, 'in', time / 1000, 's');
+            inserted += added;
+            lastTime = Date.now();
+            const duration = (lastTime - start) / 1000;
+            const estimatedCount = itemCount * 5;
+            console.log(inserted, '/ ~', estimatedCount, duration, 's elapsed', ((inserted / estimatedCount) * 100).toFixed(2), "% complete" )
+            console.log(inserted / duration, 'documents / s')
+            const rps = inserted / duration;
+            console.log('ETA: ', (estimatedCount - inserted) / rps, 's, or ', (estimatedCount - inserted) / rps / 60, 'minutes')
+            reviews = [];
+            currentConnections--;
+          };
+          currentConnections++;
+          if (currentConnections < maxConnections) {
+            db.bulkInsert(reviews).then(addHandler).catch(console.error);
+          } else {
+            await db.bulkInsert(reviews).then(addHandler);
+          }
+
+          }
+
+
         if (i === itemCount) {
           console.log(reviewCount)
         }
