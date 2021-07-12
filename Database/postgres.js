@@ -1,14 +1,24 @@
-const axios = require('axios');
 const config = require('../config.js');
-const couchURL = config.couchURL + config.dbName;
+const { Sequelize } = require('sequelize');
+const pgtools = require("pgtools");
+const sequelize = new Sequelize(config.postgresURL + config.dbName, {logging: false});
+const models = require('./databaseHelpers/postgresModels')(sequelize);
 const db = {};
 
+db.addReviewer = async (reviewer) => {
+  return models.Reviewer.create(reviewer)
+  .catch(console.error);
+}
+
 db.bulkInsert = async (reviews) => {
-  return axios.post(couchURL+'/_bulk_docs', { docs: reviews }).then(res => {
+  return models.Review.bulkCreate(reviews, {fields: [
+    'bookId', 'review', 'reviewTitle', 'date',
+    'overallStars', 'performanceStars', 'storyStars',
+    'foundHelpful','reviewerId', 'sourceId', 'locationId'
+  ]}).then(res => {
     return reviews.length;
   }).catch(err => {
-    console.error('documents could not be written');
-    console.error(err.response?.status, err?.response?.data);
+    console.error(err);
     return 0;
   })
 }
@@ -61,18 +71,28 @@ db.index = async () => {
 };
 
 db.init = async () => {
-  axios.put(couchURL).then(async res => {
-    console.log("Database not found - Created new database");
-
-  }).catch(async (err) => {
-  if (err.response?.status === 412) {
-    console.log('Connected to CouchDB @ localhost:5984');
-  } else {
-    console.log(err.response?.data?.reason);
-  }
-  }).finally(async () => {
-    return await db.getInfo();
+  await pgtools.createdb(config.postgresURL, config.dbName)
+  .catch(error => {
+    console.error('Error: ',error?.pgErr?.message);
   })
+  .finally(async res => {
+    await sequelize.sync({force: true}).then(async res => {
+      console.log('Models Synchronized');
+    }).catch(err => {
+      console.log('Models not Synchronized');
+      console.error(err);
+    })
+    await models.Source.bulkCreate([
+      {id: 1, source: 'Amazon'},
+      {id: 2, source: 'Audible'}
+    ]);
+    await models.Location.bulkCreate([
+      {id: 1, location: 'Canada'},
+      {id: 2, location: 'United States'}
+    ]);
+
+  });
+
 }
 
 db.done = async () => {

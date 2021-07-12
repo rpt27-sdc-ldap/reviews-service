@@ -3,8 +3,8 @@ const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 const randomDate = require('./seedDBHelperFunctions').randomDate;
 const imageGetterFunction  = require('../../S3_Access/imagesObject.js').imageGetter;
 const randomImage = require('./seedDBHelperFunctions').randomImage;
-const db = require('../couchdb.js');
-const dbChoice = 'couch' //or postgres
+const db = require('../postgres.js');
+const dbChoice = 'postgres' //or postgres
 const path = require('path');
 const lorem = new LoremIpsum({
 
@@ -51,16 +51,20 @@ async function seedDB() {
         const imageUrl = randomImage(imageObj);
         if (dbObject[reviewerId] === undefined) {
           reviewObject.reviewerName = name;
-          dbObject[reviewerId] = name;
+          dbObject[reviewerId] = { id : reviewerId, name };
         } else {
-          reviewObject.reviewerName = dbObject[reviewerId];
+          reviewObject.reviewerName = dbObject[reviewerId].name;
         }
         const urlString = 'imageUrl' + reviewerId.toString();
-        if (dbObject[urlString] === undefined) {
-          dbObject[urlString] = imageUrl;
+        if (dbObject[reviewerId].imageUrl === undefined) {
+          dbObject[reviewerId].imageUrl = imageUrl;
           reviewObject.urlString = imageUrl;
+          // adds this user info to postgres db
+          if (dbChoice === 'postgres') {
+            await db.addReviewer(dbObject[reviewerId]);
+          }
         } else {
-          reviewObject.urlString = dbObject[urlString];
+          reviewObject.urlString = dbObject[reviewerId].imageUrl;
         }
         const overallStars = Math.floor(Math.random() * 5) + 1;
 
@@ -84,16 +88,29 @@ async function seedDB() {
         reviewObject.date = date;
         const foundHelpful = Math.floor(Math.random() * 100);
         reviewObject.foundHelpful = foundHelpful;
+
+        let source;
+        let location;
         if (foundHelpful % 10 === 0) {
-          reviewObject.source = 'Amazon';
+          source = dbChoice !== 'postgres' ? 'Amazon' : 1;
         } else {
-          reviewObject.source = 'Audible';
+          source = dbChoice !== 'postgres' ? 'Audible' : 2;
         }
         if (foundHelpful % 5 === 0) {
-          reviewObject.location = 'Canada';
+          location = dbChoice !== 'postgres' ? 'Canada' : 1;
         } else {
-          reviewObject.location = 'United States';
+          location = dbChoice !== 'postgres' ? 'United States' : 2;
         }
+
+        // set postgres-specific id
+        if (dbChoice === 'postgres') {
+          reviewObject.sourceId = source;
+          reviewObject.locationId = location;
+        } else {
+          reviewObject.source = source;
+          reviewObject.location = location;
+        }
+
         let numberOfParagraphs = Math.floor(Math.random() * 1) + 1;
         let numberOfSentences = Math.floor(Math.random() * 7) + 1;
         let conditional = Math.random() * 5;
@@ -108,9 +125,10 @@ async function seedDB() {
 
         //db-independant bulk-insert
         let insertionLength = 2000;
-        if (reviews.length >= insertionLength) {
+        let lastTime = i === itemCount && j === (reviewCount - 1)
+        if (reviews.length >= insertionLength || lastTime) {
           const currentIndex = i;
-          function addHandler(added) {
+          async function addHandler(added) {
             inserted += added;
             const time = (Date.now() - lastTime);
             console.clear();
@@ -123,6 +141,11 @@ async function seedDB() {
             const rps = currentIndex / duration;
             console.log('ETA: ', timeToString((itemCount - currentIndex) / rps));
             currentConnections--;
+            if (lastTime) {
+              const duration = (Date.now() - start) / 1000;
+              console.log('inserted', inserted, 'records in - ', timeToString(duration));
+              return await db.done();
+            }
           };
           currentConnections++;
           const data = reviews;
@@ -141,8 +164,6 @@ async function seedDB() {
         }
       }
     }
-    const duration = (Date.now() - start) / 1000;
-    console.log('inserted', inserted, 'records in - ', timeToString(duration));
   });
 }
 
