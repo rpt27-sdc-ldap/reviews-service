@@ -45,7 +45,7 @@ async function seedDB() {
       for (j = 0; j < reviewCount; j++) {
         const reviewObject = {};
         reviewObject.bookId = i;
-        const reviewerId = Math.floor(10000 * Math.random());
+        const reviewerId = Math.floor(10000 * Math.random()) + 1;
         reviewObject.reviewerId = reviewerId;
         const name = Faker.name.findName();
         const imageUrl = randomImage(imageObj);

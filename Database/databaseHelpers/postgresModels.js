@@ -45,6 +45,14 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+  },
+  { indexes: [
+        {
+          name: 'bookId_index',
+          using: 'BTREE',
+          fields: ['bookId']
+        }
+      ]
   });
 
   const Source = sequelize.define('Source', {
