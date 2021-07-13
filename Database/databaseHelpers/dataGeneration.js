@@ -125,8 +125,8 @@ async function seedDB() {
 
         //db-independant bulk-insert
         let insertionLength = 2000;
-        let lastTime = i === itemCount && j === (reviewCount - 1)
-        if (reviews.length >= insertionLength || lastTime) {
+        let finished = i === itemCount && j === (reviewCount - 1)
+        if (reviews.length >= insertionLength || finished) {
           const currentIndex = i;
           async function addHandler(added) {
             inserted += added;
@@ -141,7 +141,7 @@ async function seedDB() {
             const rps = currentIndex / duration;
             console.log('ETA: ', timeToString((itemCount - currentIndex) / rps));
             currentConnections--;
-            if (lastTime) {
+            if (finished) {
               const duration = (Date.now() - start) / 1000;
               console.log('inserted', inserted, 'records in - ', timeToString(duration));
               return await db.done();
