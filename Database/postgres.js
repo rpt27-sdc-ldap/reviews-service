@@ -28,7 +28,21 @@ db.create = async (review) => {
 }
 
 db.read = async (bookId, reviewerId) => {
-
+  let query = `
+    select r.id, "bookId", r."reviewerId", "name", "urlString", "review", "reviewTitle", "date", "overallStars", "performanceStars","storyStars","foundHelpful","source","location"
+    from "Reviews" r, "Locations" l, "Sources" s, "Reviewers" rs
+    where r."locationId" = l."id" AND r."sourceId" = s."id"  AND r."reviewerId" = rs."id" AND r."bookId" = ${parseInt(bookId)}
+  `
+  if (reviewerId !== undefined) {
+    query += ` AND r."reviewerId" = ${parseInt(reviewerId)}`
+  }
+  return await sequelize.query(query).then(results => {
+    if (reviewerId !== undefined) {
+      return results[0][0];
+    }
+    console.log(results[1].rows);
+    return results[1].rows;
+  })
 }
 
 
@@ -40,26 +54,32 @@ db.delete = async (bookId, reviewerId) => {
   return axios.post()
 }
 
-db.getInfo = async () => {
-    return axios.get(couchURL).then(res => {
-      console.log({
-        db_name: res.data.db_name,
-        doc_count: res.data.doc_count,
-        sizes: res.data.sizes
-      });
-  }).catch(res => {
-    console.error(res?.data);
+db.handler = (req, res, query) => {
+  query.then(data => {
+    if (data === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(data);
+    }
+  })
+  .catch(err => {
+    res.sendStatus(500);
+    console.error(err);
   });
 }
 
-function createIndex (indices) {
-  return {
-    "index": {
-       "fields": indices
-    },
-    "name": "foo-json-index",
-    "type": "json"
-  };
+//////SEEDING STUFF
+
+db.getInfo = async () => {
+  return axios.get(couchURL).then(res => {
+    console.log({
+      db_name: res.data.db_name,
+      doc_count: res.data.doc_count,
+      sizes: res.data.sizes
+    });
+}).catch(res => {
+  console.error(res?.data);
+});
 }
 
 db.index = async () => {
@@ -92,16 +112,10 @@ db.init = async () => {
     ]);
 
   });
-
 }
 
 db.done = async () => {
-  console.log('Seeding finished')
-  await db.index().then(res => {
-    console.log('DB indexing started');
-  }).catch(err => {
-    'DB indexing not started'
-  })
+  console.log('Seeding finished');
 }
 
 module.exports = db;

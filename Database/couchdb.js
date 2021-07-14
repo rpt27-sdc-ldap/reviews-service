@@ -18,7 +18,12 @@ db.create = async (review) => {
 }
 
 db.read = async (bookId, reviewerId) => {
-
+  const selector = { bookId: parseInt(bookId) }
+  if (reviewerId !== undefined) {
+    selector.reviewerId = parseInt(reviewerId);
+  }
+  console.log(selector);
+  return axios.post(couchURL + '/_find', { selector }).then(res => res.data.docs);
 }
 
 
@@ -29,6 +34,22 @@ db.update = async (bookId, reviewerId, review) => {
 db.delete = async (bookId, reviewerId) => {
   return axios.post()
 }
+
+db.handler = (req, res, query) => {
+  query.then(data => {
+    if (data === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(data);
+    }
+  })
+  .catch(err => {
+    res.sendStatus(500);
+    console.error(err);
+  });
+}
+
+//////SEEDING STUFF
 
 db.getInfo = async () => {
     return axios.get(couchURL).then(res => {

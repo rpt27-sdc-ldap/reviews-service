@@ -3,8 +3,8 @@ const app = express();
 const path = require('path');
 const port = 4001;
 app.use('/books/:id', express.static(path.join(__dirname, '..', 'dist')));
-const db = require('../Database/database.js');
-const reviewCollection = db.Review;
+const db = require('../Database/postgres.js');
+//const reviewCollection = db.Review;
 const Promise = require('bluebird');
 //const bodyParser = require('body-parser');
 app.use(express.urlencoded({extended: true}));
@@ -15,8 +15,7 @@ const {
   createReview,
   readReview,
   updateReview,
-  deleteReview,
-  dbHandler
+  deleteReview
 } = require('./serverHelpers');
 const AmpOptimizerMiddleware = require('@ampproject/toolbox-optimizer-express');
 
@@ -37,25 +36,25 @@ app.get('/books/:id/reviews', (req, res) => {
 //Read
 app.get('/books/:id/reviews/author/:author', (req, res) => {
   const {id, author} = req.params;
-  dbHandler(req, res, readReview(id, author));
+  db.handler(req, res, readReview(id, author));
 });
 
 //Delete
 app.delete('/books/:id/reviews/author/:author', (req, res) => {
   const {id, author} = req.params;
-  dbHandler(req, res, deleteReview(id, author));
+  db.handler(req, res, deleteReview(id, author));
 });
 
 //Create
 app.post('/books/:id/reviews/author/:author', (req, res) => {
   const {id, author} = req.params;
-  dbHandler(req, res, createReview(id, author, req.body));
+  db.handler(req, res, createReview(id, author, req.body));
 });
 
 //update
 app.patch('/books/:id/reviews/author/:author', (req, res) => {
   const {id, author} = req.params;
-  dbHandler(req, res, updateReview(id, author, req.body));
+  db.handler(req, res, updateReview(id, author, req.body));
 });
 
 //_____This route returns reviews for carousel data such as when one wants review data for recommended books and related books.
