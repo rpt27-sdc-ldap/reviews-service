@@ -29,7 +29,7 @@ db.create = async (review) => {
 
 db.read = async (bookId, reviewerId) => {
   let query = `
-    select r.id, "bookId", r."reviewerId", "name", "urlString", "review", "reviewTitle", "date", "overallStars", "performanceStars","storyStars","foundHelpful","source","location"
+    select r.id, "bookId", r."reviewerId", "name" as "reviewerName", "urlString", "review", "reviewTitle", "date", "overallStars", "performanceStars","storyStars","foundHelpful","source","location"
     from "Reviews" r, "Locations" l, "Sources" s, "Reviewers" rs
     where r."locationId" = l."id" AND r."sourceId" = s."id"  AND r."reviewerId" = rs."id" AND r."bookId" = ${parseInt(bookId)}
   `
