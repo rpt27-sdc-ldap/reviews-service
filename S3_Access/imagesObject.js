@@ -10,12 +10,12 @@ AWS.config.update(
 var imageUrls = {};
 var s3 = new AWS.S3();
 
-let imageGetter = function (resolve) {
+let imageGetter = new Promise(function(resolve, reject) {
   s3.listObjects(
     { Bucket: "reviewimagesbucket" },
     function (error, data) {
       if (error != null) {
-        console.log('error', error)
+        reject(error);
       } else {
         for (var i = 0; i < data.Contents.length; i++) {
           imageUrls[i] = 'https://reviewimagesbucket.s3-us-west-1.amazonaws.com/' + data.Contents[i].Key
@@ -24,7 +24,7 @@ let imageGetter = function (resolve) {
       }
     }
   );
-}
+});
 
 module.exports.imageGetter = imageGetter;
 

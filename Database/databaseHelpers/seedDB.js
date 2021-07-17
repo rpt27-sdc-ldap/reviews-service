@@ -1,8 +1,8 @@
-const Review = require ('../database.js');
-const Faker = require ('faker');
+const Review = require('../database.js');
+const Faker = require('faker');
 const randomDate = require('./seedDBHelperFunctions').randomDate;
 const reviewGenerator = require('./seedDBHelperFunctions').reviewGenerator;
-const imageGetterFunction  = require('../../S3_Access/imagesObject.js').imageGetter;
+const imageGetterFunction = require('../../S3_Access/imagesObject.js').imageGetter;
 const randomImage = require('./seedDBHelperFunctions').randomImage;
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 const db = require('../database.js');
@@ -18,25 +18,24 @@ const lorem = new LoremIpsum({
   }
 });
 
-var Promise = require("bluebird");
-
 function seedDatabase() {
-  let inserted = 0;
   let attempted = 0;
+  let inserted = 0;
   let total = 0;
-  return new Promise(function (resolve, reject) {
-    imageGetterFunction(resolve);
-  })
-  .then((data) => {
+  let start = Date.now();
+  imageGetterFunction.then(async data => {
     imageObj = data;
     const dbObject = {};
-    for (let i = 0; i < 100; i++) {
-      const reviewCount = Math.floor(50 * Math.random());
+    let itemCount = 10000000;
+    let promises = [];
+    for (let i = 1; i <= itemCount; i++) {
+      const reviewCount = Math.floor(10 * Math.random());
       total += reviewCount;
+      let reviews = [];
       for (j = 0; j < reviewCount; j++) {
         const reviewObject = {};
         reviewObject.bookId = i;
-        const reviewerId = Math.floor(100 * Math.random());
+        const reviewerId = Math.floor(10000 * Math.random());
         reviewObject.reviewerId = reviewerId;
         const name = Faker.name.findName();
         const imageUrl = randomImage(imageObj);
@@ -59,23 +58,13 @@ function seedDatabase() {
           return Math.floor(Math.random() * (max - min + 1) + min);
         }
 
-        let storyStars = randomIntFromInterval((overallStars - 2) , (overallStars + 2));
-        let performanceStars = randomIntFromInterval((overallStars - 1), (overallStars + 2));
-
-        if (storyStars < 1) {
-          storyStars = 1;
-        }
-        if (storyStars > 5) {
-          storyStars = 5;
+        function minMax(value, min, max) {
+          value = Math.min(value, max);
+          return Math.max(value, min);
         }
 
-        if (performanceStars < 1) {
-          performanceStars = 1;
-        }
-        if (performanceStars > 5) {
-          performanceStars = 5;
-        }
-
+        let storyStars = minMax(randomIntFromInterval((overallStars - 2), (overallStars + 2)), 1, 5);
+        let performanceStars = minMax(randomIntFromInterval((overallStars - 1), (overallStars + 2)), 1, 5);
 
         reviewObject.overallStars = overallStars;
         reviewObject.storyStars = storyStars;
@@ -85,7 +74,7 @@ function seedDatabase() {
         reviewObject.date = date;
         const foundHelpful = Math.floor(Math.random() * 100);
         reviewObject.foundHelpful = foundHelpful;
-        if(foundHelpful % 10 === 0) {
+        if (foundHelpful % 10 === 0) {
           reviewObject.source = 'Amazon';
         } else {
           reviewObject.source = 'Audible';
@@ -106,29 +95,43 @@ function seedDatabase() {
 
         let numberOfWords = Math.floor(Math.random() * 6);
         reviewObject.reviewTitle = lorem.generateWords(numberOfWords);
-        console.log('reviewObject', reviewObject);
-        db.create(reviewObject, function (err, small) {
-          attempted++;
-          if (err) {
-            console.error(err);
-          } else {
-            inserted++;
-          }
-          if (attempted >= total) {
-            console.log(`Database Seeded: attempted ${attempted} / ${total} - ${inserted} inserted`);
-            process.exit();
-          }
-        })
+        reviews.push(reviewObject);
       }
+      promises.push(reviews);
+      if (promises.length > 100) {
+        await Promise.all(promises.map(async review => {
+          return await db.insertMany(review, { ordered: false }).then(data => {
+            inserted += data.length;
+          }).catch(err => {
+            inserted += err?.insertedDocs?.length || 0;
+          }).finally(data => {
+            attempted++;
+            if (attempted % 100 === 0) {
+              let end = Date.now();
+              let elapsed = end - start;
+              console.clear();
+              console.log('attempted:', attempted, '/', itemCount, '-', (attempted / itemCount).toFixed(2) + '%');
+              console.log('elapsed:', (elapsed / 1000).toFixed(2), 's');
+              let rate = attempted / (elapsed / 1000);
+              console.log('rate:', rate >> 0, 'items / second')
+              let etaSeconds = ((itemCount - attempted) / (rate));
+              console.log('Estimated time remaining:', etaSeconds >> 0, 's')
+            }
+            if (attempted >= itemCount) {
+              console.log('\n---\n')
+              console.log(`Database Seeded: inserted ${inserted} / ${total}`);
+              console.log(`${inserted} inserted in ${elapsed / 1000} seconds`);
+              process.exit();
+            }
+          })
+        }));
+        promises = [];
+      }
+
     }
 
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  });
 }
-
 seedDatabase();
-
 
 
