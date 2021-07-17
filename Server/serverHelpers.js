@@ -1,6 +1,4 @@
-const Promise = require('bluebird');
 const db = require('../Database/postgres.js');
-const reviewCollection = db;
 
 
 const reviewGetter = async (req, res, bookId) => {

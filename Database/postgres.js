@@ -51,7 +51,17 @@ db.update = async (bookId, reviewerId, review) => {
 }
 
 db.delete = async (bookId, reviewerId) => {
-  return axios.post()
+  if (reviewerId === undefined || bookId === undefined) {
+    throw new Error('Not specific enough');
+  }
+  return models.Review.destroy({
+    where: {
+      bookId: parseInt(bookId),
+      reviewerId: parseInt(reviewerId)
+    }
+  }).then(code => {
+    return {deleted: code === 1}
+  })
 }
 
 db.handler = (req, res, query) => {
@@ -69,26 +79,6 @@ db.handler = (req, res, query) => {
 }
 
 //////SEEDING STUFF
-
-db.getInfo = async () => {
-  return axios.get(couchURL).then(res => {
-    console.log({
-      db_name: res.data.db_name,
-      doc_count: res.data.doc_count,
-      sizes: res.data.sizes
-    });
-}).catch(res => {
-  console.error(res?.data);
-});
-}
-
-db.index = async () => {
-  return axios.post(couchURL + '/_index', createIndex(['bookId'])).then(res => {
-    return axios.post(couchURL + '/_index', createIndex(['bookId', 'reviewerId']));
-  }).catch(res => {
-    console.error(res?.data || res?.response.data);
-  })
-};
 
 db.init = async () => {
   await pgtools.createdb(config.postgresURL, config.dbName)

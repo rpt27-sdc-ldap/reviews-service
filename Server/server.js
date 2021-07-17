@@ -4,9 +4,6 @@ const path = require('path');
 const port = 4001;
 app.use('/books/:id', express.static(path.join(__dirname, '..', 'dist')));
 const db = require('../Database/postgres.js');
-//const reviewCollection = db.Review;
-const Promise = require('bluebird');
-//const bodyParser = require('body-parser');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 const {
