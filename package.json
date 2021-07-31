@@ -76,6 +76,7 @@
     "jsdom-global": "3.0.2",
     "less": "^4.1.1",
     "less-loader": "^8.1.1",
+    "newrelic": "^8.0.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0",

@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    imageUrl: {
+    urlString: {
       type: DataTypes.STRING,
       allowNull: false
     }
