@@ -26,15 +26,13 @@
     "body-parser": "^1.19.0",
     "caniuse-lite": "^1.0.30001239",
     "circleci": "^0.3.3",
-    "couchimport": "^1.5.2",
-    "csv-write-stream": "^2.0.0",
     "deepai": "^1.0.17",
     "express": "^4.17.1",
     "faker": "^5.5.3",
-    "gatsby-plugin-image": "^1.6.0",
-    "gatsby-plugin-sharp": "^3.6.0",
-    "gatsby-source-filesystem": "^3.6.0",
-    "gatsby-transformer-sharp": "^3.6.0",
+    "gatsby-plugin-image": "^0.7.2",
+    "gatsby-plugin-sharp": "^2.14.4",
+    "gatsby-source-filesystem": "^2.11.1",
+    "gatsby-transformer-sharp": "^2.12.1",
     "jest": "^26.6.3",
     "jquery": "^3.6.0",
     "lorem-ipsum": "^2.0.3",
@@ -45,7 +43,7 @@
     "path": "^0.12.7",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
-    "pgtools": "^0.3.2",
+    "pgtools": "^0.1.1",
     "react": "^17.0.2",
     "react-dev": "0.0.1",
     "react-dom": "^17.0.2",
@@ -80,6 +78,6 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^1.16.5"
   }
 }

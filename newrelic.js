@@ -1,5 +1,5 @@
 'use strict'
-const config = require('../config.js');
+const config = require('./config')
 /**
  * New Relic agent configuration.
  *
@@ -21,7 +21,7 @@ exports.config = {
    * distributed system. Enabling distributed tracing changes the behavior of some
    * New Relic features, so carefully consult the transition guide before you enable
    * this feature: https://docs.newrelic.com/docs/transition-guide-distributed-tracing
-   * Default is false.
+   * Default is true.
    */
   distributed_tracing: {
     /**

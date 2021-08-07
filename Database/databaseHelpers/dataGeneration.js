@@ -55,16 +55,15 @@ async function seedDB() {
         } else {
           reviewObject.reviewerName = dbObject[reviewerId].name;
         }
-        const urlString = 'imageUrl' + reviewerId.toString();
-        if (dbObject[reviewerId].imageUrl === undefined) {
-          dbObject[reviewerId].imageUrl = imageUrl;
+        if (dbObject[reviewerId].urlString === undefined) {
+          dbObject[reviewerId].urlString = imageUrl;
           reviewObject.urlString = imageUrl;
           // adds this user info to postgres db
           if (dbChoice === 'postgres') {
             await db.addReviewer(dbObject[reviewerId]);
           }
         } else {
-          reviewObject.urlString = dbObject[reviewerId].imageUrl;
+          reviewObject.urlString = dbObject[reviewerId].urlString;
         }
         const overallStars = Math.floor(Math.random() * 5) + 1;
 

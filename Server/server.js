@@ -64,7 +64,12 @@ app.post('/reviews/carouselReviews', (req, res) => {
   arrayOfIdsReviewGetter(req, res, idArray)
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at ${port}`)
-})
 
+
+app.start = (message) => {
+  app.listen(port, () => {
+    console.log(`${message} on ${port}`)
+  })
+}
+
+module.exports = app;
