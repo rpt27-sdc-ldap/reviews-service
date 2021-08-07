@@ -167,7 +167,8 @@ class App extends React.Component {
 
   reviewGetter() {
     let pathname = document.location.pathname;
-    fetch(`http://${window.location.hostname}:4001${pathname}reviews`)
+    let bookId = (new URLSearchParams(document.location.search)).get('bookId');
+    fetch(`http://${window.location.host}/reviews/${bookId}`)
       .then((response) => response.json())
       .then(data => {
         let nameObject = {};

@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 4001;
-app.use('/books/:id', express.static(path.join(__dirname, '..', 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 const db = require('../Database/postgres.js');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -17,7 +17,7 @@ const {
 } = require('./serverHelpers');
 const AmpOptimizerMiddleware = require('@ampproject/toolbox-optimizer-express');
 
-app.use('/books/:id/reviews', AmpOptimizerMiddleware.create());
+app.use('/eviews/:id', AmpOptimizerMiddleware.create());
 
 app.get('/loaderio-beb45e6ce404989ab48a115193192d69.txt', (req, res) => {
 	res.download(path.join(__dirname, 'loaderio-beb45e6ce404989ab48a115193192d69.txt'));
@@ -25,7 +25,7 @@ app.get('/loaderio-beb45e6ce404989ab48a115193192d69.txt', (req, res) => {
 //______This route returns all reviews on page load.
 //______It returns {reviewerName: String,reviewerId: Number,review: String,urlString: String,bookName: String,bookId: Number,date: Date,overallStars: Number,performanceStars: Number,storyStars: Number,title: String,foundHelpful: Number,source: String, location: String}
 //______This route fires on page load since this is a route integral to the initial structure of the page
-app.get('/books/:id/reviews', (req, res) => {
+app.get('/reviews/:id', (req, res) => {
   const id = req.params.id;
   res.set({"Cache-Control": "public", 'Access-Control-Allow-Origin': '*'})
   reviewGetter(req, res, id);
@@ -34,25 +34,25 @@ app.get('/books/:id/reviews', (req, res) => {
 //CRUD operations
 
 //Read
-app.get('/books/:id/reviews/author/:author', (req, res) => {
+app.get('/reviews/:id/author/:author', (req, res) => {
   const {id, author} = req.params;
   db.handler(req, res, readReview(id, author));
 });
 
 //Delete
-app.delete('/books/:id/reviews/author/:author', (req, res) => {
+app.delete('/reviews/:id/author/:author', (req, res) => {
   const {id, author} = req.params;
   db.handler(req, res, deleteReview(id, author));
 });
 
 //Create
-app.post('/books/:id/reviews/author/:author', (req, res) => {
+app.post('/reviews/:id/author/:author', (req, res) => {
   const {id, author} = req.params;
   db.handler(req, res, createReview(id, author, req.body));
 });
 
 //update
-app.patch('/books/:id/reviews/author/:author', (req, res) => {
+app.patch('/reviews/:id/author/:author', (req, res) => {
   const {id, author} = req.params;
   db.handler(req, res, updateReview(id, author, req.body));
 });
