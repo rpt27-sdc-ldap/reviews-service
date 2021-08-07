@@ -5,7 +5,7 @@
   "main": "database.js",
   "scripts": {
     "test": "jest --collect-coverage",
-    "start": "nodemon Server/server.js",
+    "start": "nodemon Server/cluster.js",
     "react-prod": "webpack --config webpack.config.js",
     "webpack": "webpack --watch",
     "lint": "eslint ./",

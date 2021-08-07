@@ -3,7 +3,7 @@ var cluster = require('cluster');
 var app = require('./server');
 
 if(cluster.isMaster) {
-    var numWorkers = 2//require('os').cpus().length - 1 || 1
+    var numWorkers = 1//require('os').cpus().length - 1 || 1
 
     console.log('Master cluster setting up ' + numWorkers + ' workers...');
 
