@@ -8,17 +8,15 @@ const reviewGetter = async (req, res, bookId) => {
   await db.read(bookId)
     .then((data) => {
       let reviews = data.filter(review => review.review !== undefined || review.reviewTitle !== undefined);
-      console.log(reviews.length);
       for (let i = 0; i < reviews.length; i++) {
         let reviewArray = reviews[i].review?.split('\n');
         let review = reviewArray?.join('<br>');
         reviews[i].review = review;
       }
-      console.log(reviews);
       res.send(reviews);
     })
     .catch((error) => {
-      console.error(error);
+      //console.error(error);
       res.status(500);
       res.send(error);
     });

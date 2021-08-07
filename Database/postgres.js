@@ -40,7 +40,6 @@ db.read = async (bookId, reviewerId) => {
     if (reviewerId !== undefined) {
       return results[0][0];
     }
-    console.log(results[1].rows);
     return results[1].rows;
   })
 }

@@ -1,4 +1,4 @@
-require('newrelic');
+//require('newrelic');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -19,7 +19,9 @@ const AmpOptimizerMiddleware = require('@ampproject/toolbox-optimizer-express');
 
 app.use('/books/:id/reviews', AmpOptimizerMiddleware.create());
 
-
+app.get('/loaderio-beb45e6ce404989ab48a115193192d69.txt', (req, res) => {
+	res.download(path.join(__dirname, 'loaderio-beb45e6ce404989ab48a115193192d69.txt'));
+});
 //______This route returns all reviews on page load.
 //______It returns {reviewerName: String,reviewerId: Number,review: String,urlString: String,bookName: String,bookId: Number,date: Date,overallStars: Number,performanceStars: Number,storyStars: Number,title: String,foundHelpful: Number,source: String, location: String}
 //______This route fires on page load since this is a route integral to the initial structure of the page
@@ -64,7 +66,12 @@ app.post('/reviews/carouselReviews', (req, res) => {
   arrayOfIdsReviewGetter(req, res, idArray)
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at ${port}`)
-})
 
+
+app.start = (message) => {
+  app.listen(port, () => {
+    console.log(`${message} on ${port}`)
+  })
+}
+
+module.exports = app;
