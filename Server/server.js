@@ -17,7 +17,7 @@ const {
 } = require('./serverHelpers');
 const AmpOptimizerMiddleware = require('@ampproject/toolbox-optimizer-express');
 
-app.use('/eviews/:id', AmpOptimizerMiddleware.create());
+app.use('/reviews/:id', AmpOptimizerMiddleware.create());
 
 app.get('/loaderio-beb45e6ce404989ab48a115193192d69.txt', (req, res) => {
 	res.download(path.join(__dirname, 'loaderio-beb45e6ce404989ab48a115193192d69.txt'));
